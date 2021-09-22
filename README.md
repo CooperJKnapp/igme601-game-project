@@ -4,7 +4,7 @@
 
 ## Team Members
 Member 1: Project Management<br/>
-Member 2: Game Design<br/>
+Mason Gaw: Game Design<br/>
 Member 3: Aesthetic Design<br/>
 Member 4: Technical Design<br/>
 CJ Knapp: Background Research & Version Control
