@@ -1,9 +1,9 @@
 # igme601-game-project
 ## Working Game Title Here
-### Working Team Name Here
+### Spiral Bound Laptops
 
 ## Team Members
-Aditya Patil: Project Management<br/>
+Aditya Patil: Production<br/>
 Mason Gaw: Game Design<br/>
 Member 3: Aesthetic Design<br/>
 Member 4: Technical Design<br/>
