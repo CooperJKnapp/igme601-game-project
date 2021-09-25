@@ -3,7 +3,7 @@
 ### Working Team Name Here
 
 ## Team Members
-Member 1: Project Management<br/>
+Aditya Patil: Project Management<br/>
 Mason Gaw: Game Design<br/>
 Member 3: Aesthetic Design<br/>
 Member 4: Technical Design<br/>
