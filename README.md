@@ -6,7 +6,7 @@
 Aditya Patil: Production<br/>
 Mason Gaw: Game Design<br/>
 Jackson Shuminski: Aesthetic Design<br/>
-Member 4: Technical Design<br/>
+Archit Vishnoi: Technical Design<br/>
 CJ Knapp: Background Research & Version Control
 
 ## Project Management
