@@ -1,12 +1,12 @@
 # igme601-game-project
-## Deaf Deaf World
+## Working Game Title Here
 ### Spiral Bound Laptops
 
 ## Team Members
-Member 1: Project Management<br/>
-Member 2: Game Design<br/>
-Member 3: Aesthetic Design<br/>
-Member 4: Technical Design<br/>
+Aditya Patil: Production<br/>
+Mason Gaw: Game Design<br/>
+Jackson Shuminski: Aesthetic Design<br/>
+Archit Vishnoi: Technical Design<br/>
 CJ Knapp: Background Research & Version Control
 
 ## Project Management
