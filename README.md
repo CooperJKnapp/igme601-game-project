@@ -1,6 +1,6 @@
 # igme601-game-project
-## Working Game Title Here
-### Working Team Name Here
+## Deaf Deaf World
+### Spiral Bound Laptops
 
 ## Team Members
 Member 1: Project Management<br/>
