@@ -11,7 +11,7 @@
 [Mm]emoryCaptures/
 
 # Probuilder gitignore
-[Pp]rojectSettings/Packages/com.unity.probuilder/Settings.json
+**/com.unity.probuilder/Settings.json
 [Aa]ssets/ProBuilder Data*
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
