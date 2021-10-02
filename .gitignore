@@ -10,6 +10,9 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 
+# User settings
+[Uu]serSettings/
+
 # Probuilder gitignore
 **/com.unity.probuilder/Settings.json
 **/Assets/ProBuilder Data/
