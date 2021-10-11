@@ -19,4 +19,8 @@ public class PersistentObject : MonoBehaviour
         inst = this;
         DontDestroyOnLoad(this.gameObject);
     }
+
+
 }
+
+
