@@ -8,6 +8,7 @@ public class lightSwitch : MonoBehaviour
     public GameObject player_cam;
     public float max_dist = 2f;
     public float cos_similarity = 0.8f;
+    public bool flip;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,12 @@ public class lightSwitch : MonoBehaviour
             {
                 // toggles the lights
                 lights.SetActive(!lights.activeSelf);
+                if (flip)
+                {
+                    Vector3 newScale = transform.localScale;
+                    newScale.y *= -1;
+                    transform.localScale = newScale;
+                }
             }
         }
     }
