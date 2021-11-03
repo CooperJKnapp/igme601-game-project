@@ -23,7 +23,6 @@ public class fireAlarm : MonoBehaviour
         if (timeUp)
         {
             FireAlarm();
-            Debug.Log("Time Up!");
         }
     }
     public void FireAlarm()
@@ -40,7 +39,6 @@ public class fireAlarm : MonoBehaviour
         {
             timeUp = false;
             currentTime -= Time.deltaTime;
-            Debug.Log(currentTime);
         }
         else
         {
