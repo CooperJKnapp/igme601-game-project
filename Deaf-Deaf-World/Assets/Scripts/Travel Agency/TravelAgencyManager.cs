@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class TravelAgencyManager : MonoBehaviour
 {
     public Text message;
+    public RectTransform ticket;
+    public Text ticketText;
     public GameObject turnIn;
     public GameObject lights;
     public basic_procedural_animation AgentAnimation;
     public string location = "Paris";
     public GameObject[] PosterLights;
     public Camera player_cam;
-
+    private string[] destinations = {"New York City", "Las Vegas", "Chichen Iza", "Tokyo", "Giza", "Paris"};
+    private string destination;
+    private bool ticketChosen = false;
     private int ChosenPoster = -1;
 
     // Start is called before the first frame update
@@ -24,17 +28,29 @@ public class TravelAgencyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!lights.activeSelf)
+        if (ticketChosen)
         {
-            AgentAnimation.awake = true;
+            ticketFlyBy();
         }
-        if (AgentAnimation.awake)
+        else
         {
-            message.text = "Use Light to show the clerk you want a ticket to " + location + " then buy a ticket";
-            GetChosenPoster();
-            if (ChosenPoster != -1)
-                GetTicket();
+            if (!lights.activeSelf)
+            {
+                AgentAnimation.awake = true;
+            }
+            if (AgentAnimation.awake)
+            {
+                message.text = "Use Light to show the clerk you want a ticket to " + location + " then buy a ticket";
+                GetChosenPoster();
+                if (ChosenPoster != -1)
+                    GetTicket();
+            }
         }
+    }
+
+    void ticketFlyBy()
+    {
+        ticket.position = new Vector3(0, Mathf.Lerp(ticket.rect.y, 0, 0.01f), 0);
     }
 
     void GetChosenPoster()
@@ -55,6 +71,7 @@ public class TravelAgencyManager : MonoBehaviour
                 }
             }
         }
+        destination = destinations[ChosenPoster];
     }
 
     void GetTicket()
@@ -73,7 +90,8 @@ public class TravelAgencyManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-
+                ticketChosen = true;
+                ticketText.text = destination;
             }
             turnIn.SetActive(true);
         }
