@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dev Scenes/PersScene.unity
     guid: f63c7d7115385204d8b516cc17797fea
+  - enabled: 1
+    path: Assets/Scenes/Dev Scenes/LevelDesign.unity
+    guid: d2ff12150a7898f439a8f1e146a3b229
+  - enabled: 1
+    path: Assets/Scenes/Fire Alarm.unity
+    guid: 1a00c5ae506a0c540b7ec25e666312b5
   m_configObjects: {}
