@@ -2,96 +2,163 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    GameObject CheckListPanel;
-    
-    
-    [SerializeField]
-    TaskList_SO taskListSOReference;
+    public static GameManager gameManagerInstance;
+    public  GameObject CheckListPanel;
 
+    public  GameObject instructionsObject;
 
+    public  TaskList_SO taskListSOReference;
+
+    public bool isSubwayDone = false;
+    public bool isFireAlarmDone = false;
+    public bool isTravelAgencyDone = false;
 
     private void Awake()
     {
-        
+        gameManagerInstance = this;
     }
+
     // Start is called before the first frame update
     void Start()
     {
 
-        //for (int i = 0; i < taskListSOReference.tasks.Count;i++)
-        //{
-        //    print(taskListSOReference.tasks[i].ToString());
-        //}
+        //SetSceneElements();
+        GameEvents.current.onSubwayGameTriggerEnter += OnSubwayEnter;
+        GameEvents.current.onSubwayGameTriggerExit += OnSubwayExit;
+        GameEvents.current.onSubwayGameTriggerStart += OnSubwayStart;
+        GameEvents.current.onSubwayGameTriggerEnd += OnSubwayEnd;
 
-        EventManager.Instance.AddListener<SubwayGameEvent>(OnSubwayGameEnd);
-        //EventManager.Instance.AddListener<TravelAgencyGameEvent>(OnTravelAgencyEnd);
+        GameEvents.current.onFireAlarmGameTriggerEnter += OnFireAlarmEnter;
+        GameEvents.current.onFireAlarmGameTriggerExit += OnFireAlarmExit;
+        GameEvents.current.onFireAlarmGameTriggerStart += OnFireAlarmStart;
+        GameEvents.current.onFireAlarmGameTriggerEnd += OnFireAlarmEnd;
 
-        SetSceneElements();
-        StartCoroutine("triggerE",5f);
+
+        GameEvents.current.onTravelAgencyTriggerEnter += OnTravelAgencyEnter;
+        GameEvents.current.onTravelAgencyTriggerExit += OnTravelAgencyExit;
+        GameEvents.current.onTravelAgencyTriggerStart += OnTravelAgencyStart;
+        GameEvents.current.onTravelAgencyTriggerEnd += OnTravelAgencyEnd;
     }
 
-
-    //Test event trigger
-    IEnumerator triggerE(float t)
-    {
-        print("started corouitne");
-        yield return new WaitForSeconds(t);
-         SubwayGameEvent SubEvent = new SubwayGameEvent();
-        OnSubwayGameEnd(SubEvent);
-        print("Triggered Event");
-    }
-    
-    //
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-
-    void SetSceneElements()
-    {
-        for (int i = 0; i < CheckListPanel.transform.childCount; i++)
-        {
-            Transform temp = CheckListPanel.transform.GetChild(i);
-            if (i< taskListSOReference.tasks.Count)
-            {
-                
-                print(temp.name);
-                temp.name = taskListSOReference.tasks[i].ToString();
-                temp.transform.GetComponentInChildren<TextMeshProUGUI>().text = taskListSOReference.tasks[i].ToString();
-            }
-            else
-            {
-                temp.gameObject.SetActive(false);
-            }
-        }
-    }
-
-    void OnSubwayGameStart()
-    {
 
     }
 
-    void OnSubwayGameEnd(SubwayGameEvent info)
-    {
 
+    //void SetSceneElements()
+    //{
+    //    for (int i = 0; i < CheckListPanel.transform.childCount; i++)
+    //    {
+    //        Transform temp = CheckListPanel.transform.GetChild(i);
+    //        if (i < taskListSOReference.tasks.Count)
+    //        {
+
+    //            print(temp.name);
+    //            temp.name = taskListSOReference.tasks[i].ToString();
+    //            temp.transform.GetComponentInChildren<TextMeshProUGUI>().text = taskListSOReference.tasks[i].ToString();
+    //        }
+    //        else
+    //        {
+    //            temp.gameObject.SetActive(false);
+    //        }
+    //    }
+    //}
+
+    #region SubwayGame Functions
+    void OnSubwayEnter()
+    {
+        print("Subway Enter Event");
+        instructionsObject.gameObject.SetActive(true);
+    }
+    void OnSubwayExit()
+    {
+        print("Subway Exit Event");
+        instructionsObject.gameObject.SetActive(false);
+    }
+
+    void OnSubwayStart()
+    {
+        print("Subway Event start");
+        instructionsObject.gameObject.SetActive(false);
+        SceneManager.LoadScene(1);
+    }
+
+    void OnSubwayEnd()
+    {
+        isSubwayDone = true;
+        SceneManager.LoadScene(0);
         print("Subway Event done");
-        EventManager.Instance.QueueEvent(info);
     }
+
+    #endregion
+
+    #region FireAlarmGame Functions
+    void OnFireAlarmEnter()
+    {
+        print("FireAlarm Enter Event");
+        instructionsObject.gameObject.SetActive(true);
+    }
+    void OnFireAlarmExit()
+    {
+        print("FireAlarm Exit Event");
+        instructionsObject.gameObject.SetActive(false);
+    }
+
+    void OnFireAlarmStart()
+    {
+        print("FireAlarm Event start");
+        instructionsObject.gameObject.SetActive(false);
+        SceneManager.LoadScene(1);
+    }
+
+    void OnFireAlarmEnd()
+    {
+        isFireAlarmDone = true;
+        SceneManager.LoadScene(0);
+        print("FireAlarm Event done");
+    }
+
+    #endregion
+
+
+    #region Travel Agency Game Functions
+    void OnTravelAgencyEnter()
+    {
+        print("Travel Agency Enter Event");
+        instructionsObject.gameObject.SetActive(true);
+    }
+
+    void OnTravelAgencyExit()
+    {
+        print("Travel Agency Exit Event");
+        instructionsObject.gameObject.SetActive(false);
+    }
+
     void OnTravelAgencyStart()
     {
-
+        print("Travel Agency Event start");
+        instructionsObject.gameObject.SetActive(false);
+        SceneManager.LoadScene(1);
     }
 
-    void OnTravelAgencyEnd(TravelAgencyGameEvent info)
+    void OnTravelAgencyEnd()
     {
+        isTravelAgencyDone = true;
+        SceneManager.LoadScene(0);
         print("Travel Agency Event done");
+
     }
+
+    #endregion
+
+
+
 
 }

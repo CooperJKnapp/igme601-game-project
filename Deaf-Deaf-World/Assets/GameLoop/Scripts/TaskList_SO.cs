@@ -8,5 +8,5 @@ public class TaskList_SO : ScriptableObject
 {
 
     [Header("Set a list of tasks")]
-    public List<GameVariables.Tasks> tasks;
+    public List<Task> tasks;
 }

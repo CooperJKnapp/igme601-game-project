@@ -19,26 +19,21 @@ public class GameVariables : MonoBehaviour
     public enum Tasks  //enum of keeping track of task states
     {
         Subway,
-        TravelAgency
+        TravelAgency,
+        MeetTheMayor
     }
 
     public Tasks taskState;
 
     void Awake()
-    {
+    {  
+        DontDestroyOnLoad(gameObject);
         if (gameVariablesInstance == null)  //To check if instance already exists
             gameVariablesInstance = this;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        else
+        {
+            print("DontDestroy Duplicate found");
+            Destroy(gameObject);
+        }
     }
 }
