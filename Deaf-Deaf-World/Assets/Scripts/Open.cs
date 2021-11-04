@@ -24,6 +24,7 @@ public class Open : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 anim.SetBool("Open", true);
+                GameEvents.current.FireAlarmGameTriggerEnd();
             }
         }
     }

@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
     {
         print("FireAlarm Event start");
         instructionsObject.gameObject.SetActive(false);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     void OnFireAlarmEnd()
