@@ -10,6 +10,7 @@ public class basic_procedural_animation : MonoBehaviour
     public bool awake;
 
     private float RestingX = 8.788f;
+    private float lerpSpeed = 0.005f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,8 @@ public class basic_procedural_animation : MonoBehaviour
             ToPlayer.y = 0;
             float TrackingY = -Mathf.Rad2Deg * Mathf.Atan2(ToPlayer.z, ToPlayer.x);
             TrackingY = Mathf.Clamp(TrackingY, -70, 70);
-            neck.localRotation = Quaternion.Slerp(neck.localRotation, Quaternion.Euler(RestingX, TrackingY, 0), 0.005f);
+            neck.localRotation = Quaternion.Slerp(neck.localRotation, Quaternion.Euler(RestingX, TrackingY, 0), lerpSpeed);
+            lerpSpeed = Mathf.Lerp(lerpSpeed, 0.01f, 0.001f);
         }
     }
 }
