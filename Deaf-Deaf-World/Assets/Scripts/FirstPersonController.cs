@@ -11,6 +11,7 @@ public class FirstPersonController : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
+    public bool canWalk = true;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -35,8 +36,8 @@ public class FirstPersonController : MonoBehaviour
         Vector3 right = transform.TransformDirection(Vector3.right);
         // Press Left Shift to run
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
+        float curSpeedX = canMove && canWalk ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
+        float curSpeedY = canMove && canWalk ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
