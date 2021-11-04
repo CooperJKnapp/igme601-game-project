@@ -22,7 +22,7 @@ public class Alert : MonoBehaviour
         distance = Vector3.Distance(target.position, transform.position);
         if (FireAlarm.timeUp)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) && text.activeInHierarchy)
             {
                 mayor.enabled = true;   
             }
