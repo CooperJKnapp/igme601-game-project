@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fire Alarm.unity
     guid: 1a00c5ae506a0c540b7ec25e666312b5
+  - enabled: 1
+    path: Assets/Scenes/mini-games/travel-agency.unity
+    guid: 4120aca5e7eb5234794cd8facf57cc63
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/Overworld.unity
+    guid: 9804df8470823ff4e8f84ea864e7b223
   m_configObjects: {}
