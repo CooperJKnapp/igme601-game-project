@@ -16,7 +16,7 @@ public class StandUp : MonoBehaviour
     void Start()
     {
         //agent.enabled = true;
-        fpsController.enabled = false;
+        fpsController.canWalk = false;
         FireAlarm = GameObject.Find("Fire Alarm Controller").GetComponent<fireAlarm>();
     }
 
@@ -25,7 +25,6 @@ public class StandUp : MonoBehaviour
     {
         if (FireAlarm.timeUp)
         {
-            fpsController.enabled = true;
             go.SetActive(true);
         }
         // try OnCollision Enter for showing the text.
@@ -35,6 +34,7 @@ public class StandUp : MonoBehaviour
             agent.enabled = true;
             if (Input.GetKeyDown(KeyCode.F))
             {
+                fpsController.canWalk = true;
                 agent.SetDestination(target.position);
                 cam.Translate(0f, yVal, 0f);
                 go.SetActive(false);
