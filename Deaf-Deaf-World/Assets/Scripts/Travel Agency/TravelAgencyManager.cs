@@ -92,7 +92,7 @@ public class TravelAgencyManager : MonoBehaviour
             turnIn.SetActive(true);
             if (Input.GetMouseButtonDown(0))
             {
-                SceneManager.LoadScene("");
+                SceneManager.LoadScene("Overworld");
             }
         }
         else
