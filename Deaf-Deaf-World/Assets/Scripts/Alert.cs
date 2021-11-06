@@ -26,11 +26,11 @@ public class Alert : MonoBehaviour
             {
                 mayor.enabled = true;   
             }
-            if (distance <= 2)
+            if (distance <= 2 && !Input.GetKeyDown(KeyCode.F))
             {
                 text.SetActive(true);
             }
-            else
+            else if(Input.GetKeyDown(KeyCode.F))
             {
                 text.SetActive(false);
             }

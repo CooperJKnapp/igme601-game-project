@@ -22,8 +22,11 @@ public class Mayor : MonoBehaviour
         distance = Vector3.Distance(target.position, transform.position);
         if(distance <= 20f)
         {
+            anim.SetBool("Sitting", true);
             anim.SetBool("walk", true);
             agent.SetDestination(target.position);
+
+
             if (distance <= agent.stoppingDistance)
             {
                 FaceTarget();
