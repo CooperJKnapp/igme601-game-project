@@ -10,6 +10,7 @@ public class Alert : MonoBehaviour
     public GameObject text;
     public float distance;
     public Transform target;
+    private int pressed = 1;
     // Start is called before the first frame update
     private void Start()
     {
@@ -22,15 +23,16 @@ public class Alert : MonoBehaviour
         distance = Vector3.Distance(target.position, transform.position);
         if (FireAlarm.timeUp)
         {
-            if (Input.GetKeyDown(KeyCode.F) && text.activeInHierarchy)
+            if (Input.GetKeyDown(KeyCode.F) && text.activeInHierarchy && pressed <= 1)
             {
-                mayor.enabled = true;   
+                mayor.enabled = true;
+                ++pressed;
             }
-            if (distance <= 2 && !Input.GetKeyDown(KeyCode.F))
+            if (distance <= 2 && pressed <= 1)
             {
                 text.SetActive(true);
             }
-            else if(Input.GetKeyDown(KeyCode.F))
+            else
             {
                 text.SetActive(false);
             }
