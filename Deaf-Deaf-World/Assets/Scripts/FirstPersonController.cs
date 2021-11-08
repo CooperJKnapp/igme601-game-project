@@ -12,6 +12,7 @@ public class FirstPersonController : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
     public bool canWalk = true;
+    public GameObject pauseScreen;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -27,6 +28,7 @@ public class FirstPersonController : MonoBehaviour
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        pauseScreen.SetActive(!canMove);
     }
 
     void Update()
@@ -41,7 +43,7 @@ public class FirstPersonController : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        if (Input.GetButton("Jump") && canMove && canWalk && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
         }
@@ -70,21 +72,26 @@ public class FirstPersonController : MonoBehaviour
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || (!canMove && Input.GetMouseButtonDown(0)))
         {
             canMove = !canMove;
+            pauseScreen.SetActive(!canMove);
             // Lock / unlock cursor
             if (canMove)
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                Time.timeScale = 1;
             }
             else
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                Time.timeScale = 0;
             }
         }
+
+        
 
     }
 }
