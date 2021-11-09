@@ -50,15 +50,14 @@ public class OverworldGM : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("isOnboardingDone")){
             PlayerPrefs.SetInt("isOnboardingDone", 1);
+            print("Onboarding PlayerPref set");
         }
-       // if (PlayerPrefs.GetInt("isOnboardingDone") == 1)
-       else
+        else
         {
             print("TurnOff the Onboarding");
             Mayor.SetActive(false);
             Onboarding.SetActive(false);
         }
-
     }
 
     // Start is called before the first frame update
