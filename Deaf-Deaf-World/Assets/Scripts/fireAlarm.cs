@@ -23,6 +23,7 @@ public class fireAlarm : MonoBehaviour
         if (timeUp)
         {
             FireAlarm();
+            anim.SetBool("Flashing", true);
         }
     }
     public void FireAlarm()
@@ -31,7 +32,6 @@ public class fireAlarm : MonoBehaviour
         {
             alarm.Play();
         }
-        anim.SetBool("Flashing" , true);
     }
     public void TimeUp()
     {

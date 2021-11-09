@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Collide
   - Mayor
+  - TravelAgency
+  - Subway
+  - MeetTheMayor
   layers:
   - Default
   - TransparentFX
