@@ -6,7 +6,8 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    float time = 31;
+    float time = 61;
+    public Transform endFail;
 
     void Start()
     {
@@ -17,5 +18,8 @@ public class Timer : MonoBehaviour
     {
         time = time - Time.deltaTime;
         text.text = "Time Left: " + (int)time;
+
+        if (time < 0)
+            endFail.gameObject.SetActive(true);
     }
 }
