@@ -7,5 +7,6 @@ using System;
 public class Task 
 {
     public GameVariables.Tasks tasksName;
-   // public bool  isDone = false;
+    // public bool  isDone = false;
+    public string textForTaskList;
 }

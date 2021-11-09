@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnboardingManager : MonoBehaviour {
+public class OnboardingManager : MonoBehaviour
+{
     private int onboardingStage;
-        /* 0 = waiting for movement controls
-         * 1 = showing movement controls, waiting for movement input
-         * 2 = showing look controls, waiting for look input
-         * 3 = showing "Go meet the mayor", waiting to pass under DDW sign
-         * 4 = mayor dialogue
-         */
+    /* 0 = waiting for movement controls
+     * 1 = showing movement controls, waiting for movement input
+     * 2 = showing look controls, waiting for look input
+     * 3 = showing "Go meet the mayor", waiting to pass under DDW sign
+     * 4 = mayor dialogue
+     */
 
     // Multi-stage
     private float waitingTimer;
@@ -27,8 +28,10 @@ public class OnboardingManager : MonoBehaviour {
     private bool horizontalNegCheck;
     private bool verticalPosCheck;
     private bool verticalNegCheck;
-    private bool FullMovementCheck {
-        get {
+    private bool FullMovementCheck
+    {
+        get
+        {
             return (horizontalPosCheck && horizontalNegCheck && verticalPosCheck && verticalNegCheck);
         }
     }
@@ -65,7 +68,9 @@ public class OnboardingManager : MonoBehaviour {
     private GameObject theMayor;
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
+        print("Onboarding start");
         // Multi-stage
         onboardingStage = 0;
 
@@ -80,19 +85,22 @@ public class OnboardingManager : MonoBehaviour {
 
         // Stage 2
         lookingCheck = false;
-        
+
         // Stage 3
-        
+
         // Stage 4
-}
+    }
 
     // Update is called once per frame
-    void Update() {
-        switch(onboardingStage) {
+    void Update()
+    {
+        switch (onboardingStage)
+        {
             case 0:
                 // Waiting for movement controls
                 waitingTimer -= Time.deltaTime;
-                if(waitingTimer <= 0.0f) {
+                if (waitingTimer <= 0.0f)
+                {
                     // Init Stage 1
                     onboardingStage++;
                     movementControlsPopup.SetActive(true);
@@ -100,34 +108,43 @@ public class OnboardingManager : MonoBehaviour {
                 break;
 
             case 1:
-                if(FullMovementCheck) {
+                if (FullMovementCheck)
+                {
                     // Wait till look prompt
                     waitingTimer -= Time.deltaTime;
-                    if (waitingTimer <= 0.0f) {
+                    if (waitingTimer <= 0.0f)
+                    {
                         // Init Stage 2
                         onboardingStage++;
                         movementControlsPopup.SetActive(false);
                         lookingControlsPopup.SetActive(true);
                     }
-                } else {
+                }
+                else
+                {
                     // Check control inputs
-                    if(Input.GetAxis("Horizontal") > 0) {
+                    if (Input.GetAxis("Horizontal") > 0)
+                    {
                         horizontalPosCheck = true;
                     }
 
-                    if(Input.GetAxis("Horizontal") < 0) {
+                    if (Input.GetAxis("Horizontal") < 0)
+                    {
                         horizontalNegCheck = true;
                     }
 
-                    if(Input.GetAxis("Vertical") > 0) {
+                    if (Input.GetAxis("Vertical") > 0)
+                    {
                         verticalPosCheck = true;
                     }
 
-                    if(Input.GetAxis("Vertical") < 0) {
+                    if (Input.GetAxis("Vertical") < 0)
+                    {
                         verticalNegCheck = true;
                     }
 
-                    if(FullMovementCheck) {
+                    if (FullMovementCheck)
+                    {
                         // Init countdown timer
                         waitingTimer = timeToWaitBeforeLookPrompt;
                     }
@@ -135,10 +152,12 @@ public class OnboardingManager : MonoBehaviour {
                 break;
 
             case 2:
-                if(lookingCheck) {
+                if (lookingCheck)
+                {
                     // Wait till timer out
                     waitingTimer -= Time.deltaTime;
-                    if (waitingTimer <= 0.0f) {
+                    if (waitingTimer <= 0.0f)
+                    {
                         // Init Stage 3
                         onboardingStage++;
                         lookingControlsPopup.SetActive(false);
@@ -146,9 +165,12 @@ public class OnboardingManager : MonoBehaviour {
                         mayorHitbox.Activate();
                         mayorOutline.enabled = true;
                     }
-                } else {
+                }
+                else
+                {
                     // Check mouse inputs
-                    if(Input.GetAxis("Mouse X") != 0.0f || Input.GetAxis("Mouse Y") != 0.0f) {
+                    if (Input.GetAxis("Mouse X") != 0.0f || Input.GetAxis("Mouse Y") != 0.0f)
+                    {
                         // Set lookingCheck
                         lookingCheck = true;
 
@@ -168,10 +190,14 @@ public class OnboardingManager : MonoBehaviour {
         }
     }
 
-    public void AdvanceStage3() {
-        if(onboardingStage != 3) {
+    public void AdvanceStage3()
+    {
+        if (onboardingStage != 3)
+        {
             return;
-        } else {
+        }
+        else
+        {
             // Init stage 4
             onboardingStage++;
             meetTheMayorPopup.SetActive(false);
@@ -180,10 +206,14 @@ public class OnboardingManager : MonoBehaviour {
         }
     }
 
-    public void AdvanceStage4() {
-        if (onboardingStage != 4) {
+    public void AdvanceStage4()
+    {
+        if (onboardingStage != 4)
+        {
             return;
-        } else {
+        }
+        else
+        {
             // Init stage finish
             onboardingStage++;
             travelAgencyOutline.enabled = true;
