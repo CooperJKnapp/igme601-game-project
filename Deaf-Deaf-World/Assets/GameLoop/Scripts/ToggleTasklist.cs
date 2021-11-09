@@ -23,7 +23,6 @@ public class ToggleTasklist : MonoBehaviour
 
     private void Awake()
     {
-
         GameManagerReference = GameObject.FindObjectOfType<GameManager>();
     }
 
@@ -45,7 +44,6 @@ public class ToggleTasklist : MonoBehaviour
             instructionsObject.SetActive(true);
             instructionsObject.GetComponentInChildren<TextMeshProUGUI>().text = "You have completed the Deaf Deaf World demo.\nThanks for testing.";
             PlayerPrefs.DeleteAll();
-            Time.timeScale = 0f;
         }
     }
 
@@ -66,10 +64,7 @@ public class ToggleTasklist : MonoBehaviour
     }
     void SetSceneElements()
     {
-
-
         int numberOfTasks = 0;
-
         for (int i = 0; i < CheckListPanel.transform.childCount; i++)
         {
             Transform temp = CheckListPanel.transform.GetChild(i);
