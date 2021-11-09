@@ -18,6 +18,8 @@ public class StopPosition : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+        
+
         stopString = collision.transform.name;
         Debug.Log(collision.transform.name);
 	}

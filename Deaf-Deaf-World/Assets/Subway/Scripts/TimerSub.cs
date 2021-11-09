@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Timer : MonoBehaviour
+public class TimerSub : MonoBehaviour
 {
     public TextMeshProUGUI text;
     float time = 61;
     public Transform endFail;
+
+    private bool doTime =false;
 
     void Start()
     {
@@ -16,10 +18,18 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        time = time - Time.deltaTime;
-        text.text = "Time Left: " + (int)time;
+        if (doTime)
+        {
+            time = time - Time.deltaTime;
+            text.text = "Time Left: " + (int)time;
 
+        }
         if (time < 0)
             endFail.gameObject.SetActive(true);
+    }
+
+    public void SetTime()
+    {
+        doTime = true;
     }
 }
