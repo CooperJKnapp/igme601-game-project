@@ -12,6 +12,7 @@ public class StandUp : MonoBehaviour
     public Transform target;
     public float yVal;
     public FirstPersonController fpsController;
+    private int pressed = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,13 +33,14 @@ public class StandUp : MonoBehaviour
         {
             go.SetActive(true);
             agent.enabled = true;
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) && pressed <= 1)
             {
                 fpsController.canWalk = true;
                 agent.SetDestination(target.position);
                 cam.Translate(0f, yVal, 0f);
                 go.SetActive(false);
                 agent.enabled = false;
+                ++pressed;
             }
         }
 

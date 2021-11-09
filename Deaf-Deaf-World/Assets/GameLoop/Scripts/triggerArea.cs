@@ -8,7 +8,6 @@ public class triggerArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (this.gameObject.tag == GameVariables.Tasks.Subway.ToString())
             GameEvents.current.SubwayGameTriggerEnter();
         else if (this.gameObject.tag == GameVariables.Tasks.TravelAgency.ToString())
@@ -19,7 +18,6 @@ public class triggerArea : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-
         if (this.gameObject.tag == GameVariables.Tasks.Subway.ToString())
             GameEvents.current.SubwayGameTriggerExit();
         else if (this.gameObject.tag == GameVariables.Tasks.TravelAgency.ToString())
@@ -32,7 +30,6 @@ public class triggerArea : MonoBehaviour
     {
         if (Input.GetKey(_keyTriggerArea))
         {
-            print("E is clicked");
             if (this.gameObject.tag == GameVariables.Tasks.Subway.ToString())
                 GameEvents.current.SubwayGameTriggerStart();
             else if (this.gameObject.tag == GameVariables.Tasks.TravelAgency.ToString())
