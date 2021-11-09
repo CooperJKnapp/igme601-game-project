@@ -45,7 +45,7 @@ public class SceneTransition : MonoBehaviour
     IEnumerator Exit()
     {
         yield return new WaitForSeconds(2);
-        //GameEvents.current.FireAlarmGameTriggerEnd();
-        //SceneManager.LoadScene("Overworld");
+        GameEvents.current.FireAlarmGameTriggerEnd();
+        SceneManager.LoadScene("Overworld");
     }
 }
