@@ -82,12 +82,14 @@ public class FirstPersonController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 Time.timeScale = 1;
+                playerCamera.GetComponent<AudioListener>().enabled = true;
             }
             else
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Time.timeScale = 0;
+                playerCamera.GetComponent<AudioListener>().enabled = false;
             }
         }
 

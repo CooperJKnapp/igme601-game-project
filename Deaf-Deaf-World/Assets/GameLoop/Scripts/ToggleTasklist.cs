@@ -9,8 +9,6 @@ public class ToggleTasklist : MonoBehaviour
 
     public KeyCode _key;
 
-    GameObject taskButton;
-
     [SerializeField]
     GameObject CheckListPanel;
 
@@ -25,7 +23,7 @@ public class ToggleTasklist : MonoBehaviour
 
     private void Awake()
     {
-        taskButton = this.gameObject;
+
         GameManagerReference = GameObject.FindObjectOfType<GameManager>();
     }
 
@@ -45,7 +43,8 @@ public class ToggleTasklist : MonoBehaviour
         if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
         {
             instructionsObject.SetActive(true);
-            instructionsObject.GetComponentInChildren<TextMeshProUGUI>().text = "GAMEOVER!!!";
+            instructionsObject.GetComponentInChildren<TextMeshProUGUI>().text = "You have completed the Deaf Deaf World demo.\nThanks for testing.";
+            PlayerPrefs.DeleteAll();
             Time.timeScale = 0f;
         }
     }
@@ -55,14 +54,12 @@ public class ToggleTasklist : MonoBehaviour
     {
         if (Input.GetKeyDown(_key))
         {
-            if (!taskButton.GetComponent<Image>().enabled)
+            if (CheckListPanel.activeSelf)
             {
                 CheckListPanel.SetActive(false);
-                taskButton.GetComponent<Image>().enabled = true;
             }
             else
             {
-                taskButton.GetComponent<Image>().enabled = false;
                 CheckListPanel.SetActive(true);
             }
         }
@@ -88,20 +85,18 @@ public class ToggleTasklist : MonoBehaviour
 
                 print(temp.name);
                 temp.name = TaskList_SO_Reference.tasks[i].tasksName.ToString();
-                temp.transform.GetComponentInChildren<TextMeshProUGUI>().text = TaskList_SO_Reference.tasks[i].tasksName.ToString();
-
-
+                temp.transform.GetComponentInChildren<TextMeshProUGUI>().text = TaskList_SO_Reference.tasks[i].textForTaskList;
                 if (GameManagerReference.isSubwayDone && TaskList_SO_Reference.tasks[i].tasksName.ToString() == "Subway")
                 {
-                    temp.transform.GetComponentInChildren<Image>().color = Color.green;
+                    temp.transform.GetComponentInChildren<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
                 }
                 else if (GameManagerReference.isTravelAgencyDone && TaskList_SO_Reference.tasks[i].tasksName.ToString() == "TravelAgency")
                 {
-                    temp.transform.GetComponentInChildren<Image>().color = Color.green;
+                    temp.transform.GetComponentInChildren<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
                 }
                 else if (GameManagerReference.isFireAlarmDone && TaskList_SO_Reference.tasks[i].tasksName.ToString() == "MeetTheMayor")
                 {
-                    temp.transform.GetComponentInChildren<Image>().color = Color.green;
+                    temp.transform.GetComponentInChildren<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
                 }
                 else
                 {

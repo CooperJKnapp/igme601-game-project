@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tasks:
   - tasksName: 1
+    textForTaskList: -Get a ticket from the Travel agency
   - tasksName: 2
+    textForTaskList: -Meet the mayor in his office
