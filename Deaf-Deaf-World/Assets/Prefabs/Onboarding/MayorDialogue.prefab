@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3325344016646671388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3325344016646671387}
+  - component: {fileID: 3325344016646671386}
+  m_Layer: 0
+  m_Name: MayorDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3325344016646671387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325344016646671388}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3325344016646671386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325344016646671388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243ee00e3fea2b14ba9476fd893baf1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText:
+  - Welcome to Deaf Deaf World! This is an event designed to teach visitors various
+    forms of nonverbal communication.
+  - "You\u2019ll be tasked with completing a checklist of seemingly straightforward
+    tasks without using your voice."
+  - You may struggle to complete these tasks, but we hope that this struggle helps
+    you empathize better with the struggles Deaf and hard of hearing individuals
+    may face in their daily lives.
+  - So! Here's your list of tasks for the day, and you can start by heading to the
+    Travel Agency on the left side of the park.
+  - Once you've completed all your tasks, come meet me in Town Hall on the far side
+    of the park for congratulations!
+  fullDialogueBox: {fileID: 0}
+  dialogueTextbox: {fileID: 0}
+  playerToLock: {fileID: 0}
+  onboardingManager: {fileID: 0}
