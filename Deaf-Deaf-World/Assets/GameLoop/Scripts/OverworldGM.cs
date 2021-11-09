@@ -60,48 +60,44 @@ public class OverworldGM : MonoBehaviour
         }
     }
 
+    void CheckIfGameOver()
+    {
+        // if (GameManagerReference.isSubwayDone && GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
+        if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
+        {
+            playerTransform.GetComponent<FirstPersonController>().canWalk = false;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        //Check for closing the trigger areas, I know Hardcoded as F 
         if (GameManagerReference.isTravelAgencyDone)
         {
             TravelAgencyTriggerArea.SetActive(false);
             FireAlarmTriggerArea.SetActive(true);
         }
 
-
-
-        //if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isSubwayDone)
-        //{
-        //    FireAlarmTriggerArea.SetActive(true);
-        //}
-        //else
-        //{
-        //    if (GameManagerReference.isSubwayDone)
-        //    {
-        //        SubwayTriggerArea.SetActive(false);
-        //    }
-        //    else if (GameManagerReference.isFireAlarmDone)
-        //    {
-        //        FireAlarmTriggerArea.SetActive(false);
-        //    }
-        //    else if (GameManagerReference.isTravelAgencyDone)
-        //    {
-        //        TravelAgencyTriggerArea.SetActive(false);
-        //    }
-        //}
-
-        if (GameManagerReference.xyz)
+        //Check and set for Players exit position from the minigames to overworld
+        if (GameManagerReference.resetThePlayerAfterTravelAgency)
         {
+            GameManagerReference.resetThePlayerAfterTravelAgency = false;
             SetPlayerAfterExitMinigame(GameVariables.Tasks.TravelAgency);
         }
+        if (GameManagerReference.resetThePlayerAfterSandwichGame)
+        {
+            GameManagerReference.resetThePlayerAfterSandwichGame = false;
+            SetPlayerAfterExitMinigame(GameVariables.Tasks.Subway);
+        }
+        if (GameManagerReference.resetThePlayerAfterFireAlarm)
+        {
+            GameManagerReference.resetThePlayerAfterFireAlarm = false;
+            SetPlayerAfterExitMinigame(GameVariables.Tasks.MeetTheMayor);
+        }
 
-    }
-
-    IEnumerator twosecwait(float af)
-    {
-        yield return new WaitForSeconds(af);
-        playerTransform.transform.position = new Vector3(0, 0, 0);
+        //Check the Game if over and set the player's movement off
+        CheckIfGameOver();
     }
 
     public void SetPlayerAfterExitMinigame(GameVariables.Tasks tasks)
@@ -109,7 +105,6 @@ public class OverworldGM : MonoBehaviour
         switch (tasks)
         {
             case GameVariables.Tasks.TravelAgency:
-                print("Switch case");
                 playerTransform.transform.position = travelAgencyExitPoint.transform.position;
                 playerTransform.transform.rotation = Quaternion.Euler(playerTransform.transform.rotation.x, travelAgencyExitPoint.transform.localRotation.y, playerTransform.transform.rotation.z);
                 break;

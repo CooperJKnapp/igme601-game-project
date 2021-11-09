@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
         isSubwayDone = true;
         SceneManager.LoadScene(0);
+        resetThePlayerAfterSandwichGame = true;
         print("Subway Event done");
     }
 
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour
     {
         isFireAlarmDone = true;
         SceneManager.LoadScene(0);
+        resetThePlayerAfterFireAlarm = true;
         print("FireAlarm Event done");
     }
 
@@ -129,13 +131,15 @@ public class GameManager : MonoBehaviour
     {
         isTravelAgencyDone = true;
         SceneManager.LoadScene(0);
-        xyz = true;
+        resetThePlayerAfterTravelAgency = true;
         print("Travel Agency Event done");
     }
 
     #endregion
 
-    public bool xyz = false;
+    public bool resetThePlayerAfterTravelAgency = false;
+    public bool resetThePlayerAfterSandwichGame = false;
+    public bool resetThePlayerAfterFireAlarm = false;
 
     private void OnApplicationQuit()
     {
