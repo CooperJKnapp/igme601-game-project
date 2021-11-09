@@ -363,6 +363,7 @@ Transform:
   m_Children:
   - {fileID: 582481811}
   - {fileID: 1418616002}
+  - {fileID: 1265275294}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -395,6 +396,7 @@ Transform:
   m_Children:
   - {fileID: 674596309}
   - {fileID: 2069025384}
+  - {fileID: 2010211427}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2700,7 +2702,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-9404
+  m_Name: pb_Mesh-5340
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3012,6 +3014,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142492226}
   m_CullTransparentMesh: 1
+--- !u!1 &1203853460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2797293628552672208, guid: 16cc46a20dc20c34b9ebee354a1c2d81, type: 3}
+  m_PrefabInstance: {fileID: 2797293630163425353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1216775564
 GameObject:
   m_ObjectHideFlags: 0
@@ -3041,6 +3048,7 @@ Transform:
   m_Children:
   - {fileID: 1461987613456706069}
   - {fileID: 789508853}
+  - {fileID: 1358685522}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -3148,6 +3156,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1265275293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1265275294}
+  m_Layer: 0
+  m_Name: FireAlarmExitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1265275294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265275293}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -0.719}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 89008864}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1293174391
 GameObject:
   m_ObjectHideFlags: 0
@@ -3317,6 +3355,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1358685521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358685522}
+  m_Layer: 0
+  m_Name: TravelAgencyExitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1358685522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358685521}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -1.0335165e-13, y: 0, z: -0.7910011}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1216775565}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &1418616002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5c4fd91091a49e44884b245da4fd8fc3, type: 3}
@@ -3420,10 +3488,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8394a66f0ca3474282e886116ab13f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Onboarding: {fileID: 1203853460}
+  Mayor: {fileID: 9452289}
+  playerTransform: {fileID: 1980768314}
   GameManagerReference: {fileID: 1801340372}
   SubwayTriggerArea: {fileID: 674596308}
   FireAlarmTriggerArea: {fileID: 582481805}
   TravelAgencyTriggerArea: {fileID: 789508848}
+  travelAgencyExitPoint: {fileID: 1358685521}
+  subwayGameExitPoint: {fileID: 2010211426}
+  fireAlarmExitPoint: {fileID: 1265275293}
 --- !u!4 &1529421065
 Transform:
   m_ObjectHideFlags: 0
@@ -3742,12 +3816,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f388e61d644de1543a0b87f7375a4e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overworld: {fileID: 1529421064}
   CheckListPanel: {fileID: 531778001}
   instructionsObject: {fileID: 673354792}
   taskListSOReference: {fileID: 0}
   isSubwayDone: 0
   isFireAlarmDone: 0
   isTravelAgencyDone: 0
+  xyz: 0
 --- !u!114 &1801340373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4276,6 +4352,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1956390211}
   m_CullTransparentMesh: 1
+--- !u!1 &1980768314 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 397028660630709097, guid: a01e2443853e6d2458d507a654ae5e59, type: 3}
+  m_PrefabInstance: {fileID: 2029504378}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2010211426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2010211427}
+  m_Layer: 0
+  m_Name: SubwayExitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2010211427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010211426}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -40.23, y: -38.903336, z: -14.801636}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 112669437}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2017607951
 GameObject:
   m_ObjectHideFlags: 0
@@ -4494,7 +4605,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 397028660630709101, guid: a01e2443853e6d2458d507a654ae5e59, type: 3}
   m_PrefabInstance: {fileID: 2029504378}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1980768314}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e089dcf406f02341b576a0afbf0ddba, type: 3}

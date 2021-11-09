@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameManager : MonoBehaviour
 {
+
+    public OverworldGM overworld;
+ 
     public static GameManager gameManagerInstance;
+    
     public  GameObject CheckListPanel;
 
     public  GameObject instructionsObject;
@@ -14,7 +19,9 @@ public class GameManager : MonoBehaviour
     public  TaskList_SO taskListSOReference;
 
     public bool isSubwayDone = false;
+
     public bool isFireAlarmDone = false;
+    
     public bool isTravelAgencyDone = false;
 
     private void Awake()
@@ -25,7 +32,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         //SetSceneElements();
         GameEvents.current.onSubwayGameTriggerEnter += OnSubwayEnter;
         GameEvents.current.onSubwayGameTriggerExit += OnSubwayExit;
@@ -37,39 +43,11 @@ public class GameManager : MonoBehaviour
         GameEvents.current.onFireAlarmGameTriggerStart += OnFireAlarmStart;
         GameEvents.current.onFireAlarmGameTriggerEnd += OnFireAlarmEnd;
 
-
         GameEvents.current.onTravelAgencyTriggerEnter += OnTravelAgencyEnter;
         GameEvents.current.onTravelAgencyTriggerExit += OnTravelAgencyExit;
         GameEvents.current.onTravelAgencyTriggerStart += OnTravelAgencyStart;
         GameEvents.current.onTravelAgencyTriggerEnd += OnTravelAgencyEnd;
     }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
-    //void SetSceneElements()
-    //{
-    //    for (int i = 0; i < CheckListPanel.transform.childCount; i++)
-    //    {
-    //        Transform temp = CheckListPanel.transform.GetChild(i);
-    //        if (i < taskListSOReference.tasks.Count)
-    //        {
-
-    //            print(temp.name);
-    //            temp.name = taskListSOReference.tasks[i].ToString();
-    //            temp.transform.GetComponentInChildren<TextMeshProUGUI>().text = taskListSOReference.tasks[i].ToString();
-    //        }
-    //        else
-    //        {
-    //            temp.gameObject.SetActive(false);
-    //        }
-    //    }
-    //}
 
     #region SubwayGame Functions
     void OnSubwayEnter()
@@ -127,7 +105,6 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-
     #region Travel Agency Game Functions
     void OnTravelAgencyEnter()
     {
@@ -152,13 +129,16 @@ public class GameManager : MonoBehaviour
     {
         isTravelAgencyDone = true;
         SceneManager.LoadScene(0);
+        xyz = true;
         print("Travel Agency Event done");
-
     }
 
     #endregion
 
+    public bool xyz = false;
 
-
-
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
