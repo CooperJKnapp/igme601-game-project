@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
     
     public bool isTravelAgencyDone = false;
 
-    public static event EventHandler miniGameDone;
-
     private void Awake()
     {
         gameManagerInstance = this;
@@ -138,4 +136,9 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public bool xyz = false;
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }

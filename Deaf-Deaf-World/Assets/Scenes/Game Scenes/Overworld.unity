@@ -4411,6 +4411,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5c4fd91091a49e44884b245da4fd8fc3, type: 3}
   m_PrefabInstance: {fileID: 304122637}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1521362826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2797293628552672208, guid: 16cc46a20dc20c34b9ebee354a1c2d81, type: 3}
+  m_PrefabInstance: {fileID: 2797293630163425353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1529421063
 GameObject:
   m_ObjectHideFlags: 0
@@ -4441,6 +4446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8394a66f0ca3474282e886116ab13f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Onboarding: {fileID: 1521362826}
+  Mayor: {fileID: 592824797}
   playerTransform: {fileID: 401650062}
   GameManagerReference: {fileID: 1801340372}
   SubwayTriggerArea: {fileID: 674596308}
@@ -4675,12 +4682,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f388e61d644de1543a0b87f7375a4e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overworld: {fileID: 0}
   CheckListPanel: {fileID: 531778001}
   instructionsObject: {fileID: 673354792}
   taskListSOReference: {fileID: 0}
   isSubwayDone: 0
   isFireAlarmDone: 0
   isTravelAgencyDone: 0
+  xyz: 0
 --- !u!114 &1801340373
 MonoBehaviour:
   m_ObjectHideFlags: 0

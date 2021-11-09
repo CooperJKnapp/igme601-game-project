@@ -6,6 +6,14 @@ public class OverworldGM : MonoBehaviour
 {
     public static OverworldGM overworldGMInstance;
 
+    [Header("Onboarding Object Reference")]
+
+    [SerializeField]
+    GameObject Onboarding;
+
+    [SerializeField]
+    GameObject Mayor;
+
     [SerializeField]
     GameObject playerTransform;
 
@@ -39,6 +47,18 @@ public class OverworldGM : MonoBehaviour
     {
         overworldGMInstance = this;
         GameManagerReference = GameObject.FindObjectOfType<GameManager>();
+
+        if (!PlayerPrefs.HasKey("isOnboardingDone")){
+            PlayerPrefs.SetInt("isOnboardingDone", 1);
+        }
+       // if (PlayerPrefs.GetInt("isOnboardingDone") == 1)
+       else
+        {
+            print("TurnOff the Onboarding");
+            Mayor.SetActive(false);
+            Onboarding.SetActive(false);
+        }
+
     }
 
     // Start is called before the first frame update
