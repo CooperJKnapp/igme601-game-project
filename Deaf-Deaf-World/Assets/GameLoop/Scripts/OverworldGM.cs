@@ -110,16 +110,16 @@ public class OverworldGM : MonoBehaviour
         {
             case GameVariables.Tasks.TravelAgency:
                 print("Switch case");
-                playerTransform.transform.position = travelAgencyExitPoint.transform.localPosition;
-                //playerTransform.transform.rotation = Quaternion.Euler(playerTransform.transform.rotation.x, travelAgencyExitPoint.transform.localRotation.y, playerTransform.transform.rotation.z);
+                playerTransform.transform.position = travelAgencyExitPoint.transform.position;
+                playerTransform.transform.rotation = Quaternion.Euler(playerTransform.transform.rotation.x, travelAgencyExitPoint.transform.localRotation.y, playerTransform.transform.rotation.z);
                 break;
             case GameVariables.Tasks.Subway:
-                playerTransform.transform.position = subwayGameExitPoint.transform.localPosition;
-                playerTransform.transform.rotation = subwayGameExitPoint.transform.localRotation;
+                playerTransform.transform.position = subwayGameExitPoint.transform.position;
+                playerTransform.transform.rotation = Quaternion.Euler(playerTransform.transform.rotation.x, subwayGameExitPoint.transform.localRotation.y, playerTransform.transform.rotation.z);
                 break;
             case GameVariables.Tasks.MeetTheMayor:
-                playerTransform.transform.position = fireAlarmExitPoint.transform.localPosition;
-                playerTransform.transform.rotation = fireAlarmExitPoint.transform.localRotation;
+                playerTransform.transform.position = fireAlarmExitPoint.transform.position;
+                playerTransform.transform.rotation = Quaternion.Euler(playerTransform.transform.rotation.x, fireAlarmExitPoint.transform.localRotation.y, playerTransform.transform.rotation.z);
                 break;
         }
     }
