@@ -107,6 +107,7 @@ public class OverworldGM : MonoBehaviour
             case GameVariables.Tasks.TravelAgency:
                 playerTransform.transform.position = travelAgencyExitPoint.transform.position;
                 playerTransform.transform.rotation = Quaternion.Euler(playerTransform.transform.rotation.x, travelAgencyExitPoint.transform.localRotation.y, playerTransform.transform.rotation.z);
+                print("Travel agency set");
                 break;
             case GameVariables.Tasks.Subway:
                 playerTransform.transform.position = subwayGameExitPoint.transform.position;
