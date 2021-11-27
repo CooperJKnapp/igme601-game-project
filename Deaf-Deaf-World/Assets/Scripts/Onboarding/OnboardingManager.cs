@@ -66,10 +66,14 @@ public class OnboardingManager : MonoBehaviour
     private Outline travelAgencyOutline;
     [SerializeField]
     private GameObject theMayor;
+    [SerializeField]
+    private MayorMovement mayorMovement;
 
     // Start is called before the first frame update
     void Start()
     {
+        mayorMovement = GameObject.Find("Mayor").GetComponent<MayorMovement>();
+        mayorMovement.enabled = false;
         print("Onboarding start");
         // Multi-stage
         onboardingStage = 0;
@@ -217,7 +221,7 @@ public class OnboardingManager : MonoBehaviour
             // Init stage finish
             onboardingStage++;
             travelAgencyOutline.enabled = true;
-            theMayor.SetActive(false);
+            mayorMovement.enabled = true;
         }
     }
 }
