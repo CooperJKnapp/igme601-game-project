@@ -828,6 +828,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3393059317818742671, guid: 5c4fd91091a49e44884b245da4fd8fc3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 508fb28d827bb8046b218f4933f2f0cb, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c4fd91091a49e44884b245da4fd8fc3, type: 3}
       propertyPath: m_Name
       value: city hall sign
@@ -1099,6 +1103,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3393059317818742671, guid: 16ec517b21a70ec4ab80e0f6fdf2e3be, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 508fb28d827bb8046b218f4933f2f0cb, type: 2}
     - target: {fileID: 919132149155446097, guid: 16ec517b21a70ec4ab80e0f6fdf2e3be, type: 3}
       propertyPath: m_Name
       value: deli sign
@@ -2330,7 +2338,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-15810
+  m_Name: pb_Mesh-140224
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8919,7 +8927,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: e501e8b68c5885346be8850aaa7e1776, type: 3}
+  - {fileID: 2100000, guid: 508fb28d827bb8046b218f4933f2f0cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9923,6 +9931,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6984823364066141357, guid: b846f57cf839d9149ad20cc1e861c694, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 508fb28d827bb8046b218f4933f2f0cb, type: 2}
     - target: {fileID: 7094850020963657466, guid: b846f57cf839d9149ad20cc1e861c694, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -10059,6 +10071,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7591247843562572450, guid: b846f57cf839d9149ad20cc1e861c694, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 508fb28d827bb8046b218f4933f2f0cb, type: 2}
+    - target: {fileID: 8805429588743625666, guid: b846f57cf839d9149ad20cc1e861c694, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 508fb28d827bb8046b218f4933f2f0cb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b846f57cf839d9149ad20cc1e861c694, type: 3}
 --- !u!4 &5829248060293102859
