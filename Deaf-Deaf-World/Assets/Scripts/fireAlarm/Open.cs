@@ -12,20 +12,16 @@ public class Open : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FireAlarm = GameObject.Find("Fire Alarm Controller").GetComponent<fireAlarm>();
+        //FireAlarm = GameObject.Find("Fire Alarm Controller").GetComponent<fireAlarm>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (text.activeInHierarchy == true)
+        if (Input.GetMouseButton(0) && text.activeInHierarchy)
         {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                StartCoroutine(CloseDoor());
-            }
-        }
+            StartCoroutine(CloseDoor());
+        }  
     }
     private void OnTriggerEnter(Collider other)
     {
