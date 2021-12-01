@@ -21,7 +21,7 @@ public class TimerSub : MonoBehaviour
         if (doTime)
         {
             time = time - Time.deltaTime;
-            text.text = "Time Left: " + (int)time;
+            text.text = "TIME LEFT : " + (int)time;
 
         }
         if (time < 0)
