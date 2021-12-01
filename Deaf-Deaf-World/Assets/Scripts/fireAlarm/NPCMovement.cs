@@ -28,10 +28,12 @@ public class NPCMovement : MonoBehaviour
         distance = Vector3.Distance(transform.position, player.position);
         if(distance <= 3)
         {
+            anim.SetBool("Move", false);
             agent.SetDestination(transform.position);
         }
         else
         {
+            anim.SetBool("Move", true);
             Move();
         }
     }
