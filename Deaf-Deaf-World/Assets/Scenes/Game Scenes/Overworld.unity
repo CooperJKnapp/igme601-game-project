@@ -7083,6 +7083,12 @@ PrefabInstance:
       value: "You\u2019ll be tasked with completing a checklist of straightforward
         tasks for me without using your voice."
       objectReference: {fileID: 0}
+    - target: {fileID: 2797293628714400756, guid: 16cc46a20dc20c34b9ebee354a1c2d81, type: 3}
+      propertyPath: dialogueText.Array.data[3]
+      value: So! Here's your list of tasks for the day, and you can start by heading
+        to the Travel Agency. Ask anyone for directions using your phone if you get
+        lost, we are all very friendly here in Deaf Deaf World!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16cc46a20dc20c34b9ebee354a1c2d81, type: 3}
 --- !u!4 &2806897982243756256
