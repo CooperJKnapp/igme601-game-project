@@ -13,7 +13,7 @@ public class TimerSub : MonoBehaviour
 
     void Start()
     {
-        text.text = "Time Left: ";
+        text.text = "TIME LEFT : ";
     }
 
     void Update()
