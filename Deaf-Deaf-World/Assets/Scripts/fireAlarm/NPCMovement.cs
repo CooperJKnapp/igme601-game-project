@@ -7,14 +7,17 @@ public class NPCMovement : MonoBehaviour
 {
     //public Vector3 target;
     public Transform[] waypoint;
+    public Transform player;
     private Animator anim;
     private NavMeshAgent agent;
     private int i;
     private float minDistance = 2f;
+    public float distance;
     // Start is called before the first frame update
     void Start()
     {
         i = 0;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
@@ -22,7 +25,15 @@ public class NPCMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        distance = Vector3.Distance(transform.position, player.position);
+        if(distance <= 3)
+        {
+            agent.SetDestination(transform.position);
+        }
+        else
+        {
+            Move();
+        }
     }
     void Move()
     {
