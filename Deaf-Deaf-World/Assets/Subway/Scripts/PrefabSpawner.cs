@@ -8,6 +8,7 @@ public class PrefabSpawner : MonoBehaviour
     public GameObject[] meatArray;
     public GameObject[] vegArray;
     public GameObject[] sauceArray;
+    public GameObject[] sauceLineArray;
 
     void Start()
     {
@@ -39,9 +40,15 @@ public class PrefabSpawner : MonoBehaviour
             //obj.transform.localScale = new Vector3(1, 1, 1);
             return obj;
         }
-        else
+        else if (m == 3)
         {
             GameObject obj = GameObject.Instantiate(sauceArray[n - 1]);
+            obj.transform.localScale = new Vector3(1, 1, 1);
+            return obj;
+        }
+        else
+        {
+            GameObject obj = GameObject.Instantiate(sauceLineArray[n - 1]);
             obj.transform.localScale = new Vector3(1, 1, 1);
             return obj;
         }

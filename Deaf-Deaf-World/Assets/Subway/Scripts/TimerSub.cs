@@ -9,6 +9,8 @@ public class TimerSub : MonoBehaviour
     float time = 61;
     public Transform endFail;
 
+    private bool doTime =false;
+
     void Start()
     {
         text.text = "Time Left: ";
@@ -16,10 +18,18 @@ public class TimerSub : MonoBehaviour
 
     void Update()
     {
-        time = time - Time.deltaTime;
-        text.text = "Time Left: " + (int)time;
+        if (doTime)
+        {
+            time = time - Time.deltaTime;
+            text.text = "TIME LEFT : " + (int)time;
 
+        }
         if (time < 0)
             endFail.gameObject.SetActive(true);
+    }
+
+    public void SetTime()
+    {
+        doTime = true;
     }
 }
