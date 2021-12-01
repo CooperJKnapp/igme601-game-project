@@ -19,7 +19,7 @@ public class FirstPersonController : MonoBehaviour
     float rotationX = 0;
 
     [HideInInspector]
-    public bool canMove = true;
+    public static bool canMove = true;
 
     void Start()
     {
@@ -92,8 +92,26 @@ public class FirstPersonController : MonoBehaviour
                 playerCamera.GetComponent<AudioListener>().enabled = false;
             }
         }
-
-        
-
     }
+
+
+    //public void InteractWithNPC()
+    //{
+
+    //}
+
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("NPC"))
+    //        print("NPC Enter collider");
+    //}
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("NPC"))
+    //        print("NPC Exit collider");
+    //}
+
+
 }

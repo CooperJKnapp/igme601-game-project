@@ -22,6 +22,7 @@ public class NPCMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if(!NPCInteract.NPCInteractInstance.isNPCinteractable)
         Move();
     }
     void Move()
