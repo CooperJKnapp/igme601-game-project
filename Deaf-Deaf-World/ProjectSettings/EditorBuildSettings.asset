@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/mini-games/travel-agency.unity
     guid: 4120aca5e7eb5234794cd8facf57cc63
   - enabled: 1
-    path: Assets/Scenes/Fire Alarm.unity
+    path: Assets/Scenes/mini-games/Fire Alarm.unity
     guid: 1a00c5ae506a0c540b7ec25e666312b5
+  - enabled: 1
+    path: Assets/Scenes/mini-games/Subway.unity
+    guid: a12dea1657d105c4692577c024feef40
   m_configObjects: {}

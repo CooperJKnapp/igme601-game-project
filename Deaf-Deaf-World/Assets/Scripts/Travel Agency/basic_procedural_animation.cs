@@ -11,6 +11,7 @@ public class basic_procedural_animation : MonoBehaviour
 
     private float RestingX = 8.788f;
     private float lerpSpeed = 0.005f;
+    private bool first = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,10 @@ public class basic_procedural_animation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!first && GetComponent<Animator>().enabled)
+            GetComponent<Animator>().enabled = false;
+        first = false;
+
         if (!awake)
         {
             neck.localRotation = Quaternion.Euler(55, 0, 0);
@@ -30,7 +35,7 @@ public class basic_procedural_animation : MonoBehaviour
             Vector3 ToPlayer = player.position - transform.position;
             ToPlayer.y = 0;
             float TrackingY = -Mathf.Rad2Deg * Mathf.Atan2(ToPlayer.z, ToPlayer.x);
-            TrackingY = Mathf.Clamp(TrackingY, -70, 70);
+            TrackingY = Mathf.Clamp(TrackingY, -50, 50);
             neck.localRotation = Quaternion.Slerp(neck.localRotation, Quaternion.Euler(RestingX, TrackingY, 0), lerpSpeed);
             lerpSpeed = Mathf.Lerp(lerpSpeed, 0.01f, 0.001f);
         }
