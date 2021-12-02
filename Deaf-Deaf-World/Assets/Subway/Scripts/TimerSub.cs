@@ -25,7 +25,10 @@ public class TimerSub : MonoBehaviour
 
         }
         if (time < 0)
+        {
             endFail.gameObject.SetActive(true);
+            doTime = false;
+        }
     }
 
     public void SetTime()
