@@ -8,6 +8,8 @@ TagManager:
   - TravelAgency
   - Subway
   - receptionist
+  - MeetTheMayor
+  - Agent
   layers:
   - Default
   - TransparentFX
