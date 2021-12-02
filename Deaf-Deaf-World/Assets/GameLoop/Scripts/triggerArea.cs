@@ -5,6 +5,7 @@ using UnityEngine;
 public class triggerArea : MonoBehaviour
 {
     public KeyCode _keyTriggerArea;
+    public GameObject instructions;
 
     GameManager GameManagerReference;
 
@@ -53,6 +54,10 @@ public class triggerArea : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             print("Debug stay the player");
+            if (instructions != null)
+            {
+                instructions.SetActive(true);
+            }
             if (Input.GetKey(_keyTriggerArea))
             {
                 print("Debug stay player and key");
@@ -63,7 +68,7 @@ public class triggerArea : MonoBehaviour
                 else if (this.gameObject.tag == GameVariables.Tasks.MeetTheMayor.ToString() &&
                     GameManagerReference.isSubwayDone && GameManagerReference.isTravelAgencyDone)
                 {
-                    print("Debug stay the condition city hall");
+                    
                     GameEvents.current.FireAlarmGameTriggerStart();
 
                 }

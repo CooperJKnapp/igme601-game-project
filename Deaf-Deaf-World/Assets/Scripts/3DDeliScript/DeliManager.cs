@@ -18,8 +18,8 @@ public class DeliManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-
-        entering = !GameManager.gameManagerInstance.is2DSubwayDone;
+        GameManager GameManagerReference = GameObject.FindObjectOfType<GameManager>();
+        entering = !GameManagerReference.is2DSubwayDone;
 
         player = GameObject.Find("Player").transform;
         exit = GameObject.Find("doorSpot").GetComponent<doorExit>();

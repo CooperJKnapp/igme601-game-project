@@ -1916,6 +1916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyTriggerArea: 323
+  instructions: {fileID: 673354792}
 --- !u!65 &582481808
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2148,6 +2149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyTriggerArea: 323
+  instructions: {fileID: 0}
 --- !u!65 &674596312
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2410,6 +2412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyTriggerArea: 323
+  instructions: {fileID: 0}
 --- !u!65 &789508850
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -2732,6 +2732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9f1b08360d524aa2282c931368bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorSpawn: {fileID: 1898970340}
+  orderSpawn: {fileID: 1318939246}
   entering: 1
 --- !u!4 &2075894368
 Transform:
