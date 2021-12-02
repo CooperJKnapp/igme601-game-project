@@ -6,6 +6,13 @@ public class triggerArea : MonoBehaviour
 {
     public KeyCode _keyTriggerArea;
 
+    GameManager GameManagerReference;
+
+    private void Awake()
+    {
+        GameManagerReference = GameObject.FindObjectOfType<GameManager>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -54,7 +61,7 @@ public class triggerArea : MonoBehaviour
                 else if (this.gameObject.tag == GameVariables.Tasks.TravelAgency.ToString())
                     GameEvents.current.TravelAgencyGameTriggerStart();
                 else if (this.gameObject.tag == GameVariables.Tasks.MeetTheMayor.ToString() &&
-                    GameManager.gameManagerInstance.isSubwayDone && GameManager.gameManagerInstance.isTravelAgencyDone)
+                    GameManagerReference.isSubwayDone && GameManagerReference.isTravelAgencyDone)
                 {
                     print("Debug stay the condition city hall");
                     GameEvents.current.FireAlarmGameTriggerStart();
@@ -62,7 +69,7 @@ public class triggerArea : MonoBehaviour
                 }
                 // else
 
-                print(" tag " + gameObject.tag + " sub " + GameManager.gameManagerInstance.isSubwayDone + " travel  " + GameManager.gameManagerInstance.isTravelAgencyDone);
+                //print(" tag " + gameObject.tag + " sub " + GameManagerReference.isSubwayDone + " travel  " + GameManagerReference.isTravelAgencyDone);
 
             }
         }
