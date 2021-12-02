@@ -24,13 +24,13 @@ public class OverworldGM : MonoBehaviour
 
     [Header("Trigger Area Objects References")]
     [SerializeField]
-    GameObject SubwayTriggerArea;
+    public GameObject SubwayTriggerArea;
 
     [SerializeField]
-    GameObject FireAlarmTriggerArea;
+    public GameObject FireAlarmTriggerArea;
 
     [SerializeField]
-    GameObject TravelAgencyTriggerArea;
+    public GameObject TravelAgencyTriggerArea;
 
     [Header("Exit Point References")]
 
