@@ -64,6 +64,7 @@ public class OverworldGM : MonoBehaviour
         print(" Debug Overworld set again");
     }
 
+    /*
     void CheckIfGameOver()
     {
         // if (GameManagerReference.isSubwayDone && GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
@@ -71,7 +72,7 @@ public class OverworldGM : MonoBehaviour
         {
             playerTransform.GetComponent<FirstPersonController>().canWalk = false;
         }
-    }
+    }*/
 
     // Start is called before the first frame update
     void Start()
@@ -119,7 +120,7 @@ public class OverworldGM : MonoBehaviour
         }
 
         //Check the Game if over and set the player's movement off
-        CheckIfGameOver();
+        //CheckIfGameOver();
     }
 
     public void SetPlayerAfterExitMinigame(GameVariables.Tasks tasks)
@@ -129,12 +130,12 @@ public class OverworldGM : MonoBehaviour
             case GameVariables.Tasks.TravelAgency:
                 playerTransform.transform.position = travelAgencyExitPoint.transform.position;
                 playerTransform.transform.rotation = Quaternion.Euler(playerTransform.transform.rotation.x, travelAgencyExitPoint.transform.localRotation.y, playerTransform.transform.rotation.z);
-                print("Travel agency set");
+                print("debug position TA");
                 break;
             case GameVariables.Tasks.Subway:
                 playerTransform.transform.position = subwayGameExitPoint.transform.position;
                 playerTransform.transform.rotation = Quaternion.Euler(playerTransform.transform.rotation.x, subwayGameExitPoint.transform.localRotation.y, playerTransform.transform.rotation.z);
-                print(" Debug Subway set position after minigame");
+                print("debug position DDD");
                 break;
             case GameVariables.Tasks.MeetTheMayor:
                 playerTransform.transform.position = fireAlarmExitPoint.transform.position;
