@@ -12,11 +12,13 @@ public class MayorMovement : MonoBehaviour
     private int i;
     private float minDistance = 2f;
     public Transform finalWaypoint;
+    public float distance;
+    public Transform player;
     // Start is called before the first frame update
     void Start()
     {
         i = 0;
-        //transform.position = waypoint[i].transform.position;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
@@ -24,7 +26,17 @@ public class MayorMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        distance = Vector3.Distance(transform.position, player.position);
+        if (distance <= 3)
+        {
+            anim.SetBool("Move", false);
+            agent.SetDestination(transform.position);
+        }
+        else
+        {
+            anim.SetBool("Move", true);
+            Move();
+        }
         if (Vector3.Distance(finalWaypoint.transform.position, transform.position) < minDistance)
         {
             gameObject.SetActive(false);
@@ -32,13 +44,13 @@ public class MayorMovement : MonoBehaviour
     }
     void Move()
     {
-        if (i <= waypoint.Length - 1)
+        if (i != waypoint.Length - 1)
         {
             if (Vector3.Distance(waypoint[i].transform.position, transform.position) < minDistance)
             {
                 ++i;
             }
-            anim.SetBool("walk", true);
+            anim.SetBool("Move", true);
             agent.SetDestination(waypoint[i].transform.position);
         }
     }
