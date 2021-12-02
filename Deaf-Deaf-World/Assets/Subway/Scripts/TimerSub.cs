@@ -32,4 +32,10 @@ public class TimerSub : MonoBehaviour
     {
         doTime = true;
     }
+
+    public void StopTime()
+    {
+        doTime = false;
+
+    }
 }
