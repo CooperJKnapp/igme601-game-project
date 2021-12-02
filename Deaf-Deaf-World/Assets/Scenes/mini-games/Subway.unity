@@ -24778,6 +24778,7 @@ MonoBehaviour:
   stopPosition3: {fileID: 1353186538}
   stopPosition4: {fileID: 1876209467}
   endPanel: {fileID: 1906875011}
+  timerSub: {fileID: 1132773891}
 --- !u!4 &1500540635
 Transform:
   m_ObjectHideFlags: 0

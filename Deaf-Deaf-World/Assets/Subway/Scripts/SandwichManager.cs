@@ -15,6 +15,7 @@ public class SandwichManager : MonoBehaviour
     public StopPosition stopPosition4;
 
     public Transform endPanel;
+    public TimerSub timerSub;
 
     int breadRandom;
     int meatRandom;
@@ -211,7 +212,7 @@ public class SandwichManager : MonoBehaviour
 
                 totalCheck--;
                 if (totalCheck == 0)
-                    endPanel.gameObject.SetActive(true);
+                    SuccessState();
             }
         }
         if (section == 2 && currMeat != -1)
@@ -235,7 +236,7 @@ public class SandwichManager : MonoBehaviour
 
                 totalCheck--;
                 if (totalCheck == 0)
-                    endPanel.gameObject.SetActive(true);
+                    SuccessState();
             }
         }
         if (section == 3 && currVeggie != -1)
@@ -262,7 +263,7 @@ public class SandwichManager : MonoBehaviour
 
                 totalCheck--;
                 if (totalCheck == 0)
-                    endPanel.gameObject.SetActive(true);
+                    SuccessState();
             }
         }
         if (section == 4 && currSauce != -1)
@@ -289,10 +290,16 @@ public class SandwichManager : MonoBehaviour
 
                 totalCheck--;
                 if (totalCheck == 0)
-                    endPanel.gameObject.SetActive(true);
+                    SuccessState();
 
             }
         }
+    }
+
+    private void SuccessState()
+    {
+        endPanel.gameObject.SetActive(true);
+        timerSub.StopTime();
     }
 
     public void SetLevel(int i)
