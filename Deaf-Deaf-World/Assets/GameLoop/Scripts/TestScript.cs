@@ -17,7 +17,7 @@ public class TestScript : MonoBehaviour
     {
         if (Input.GetKeyDown(_key))
         {
-            GameEvents.current.TravelAgencyGameTriggerEnd();
+            //GameEvents.current.TravelAgencyGameTriggerEnd();
         }
     }
 }

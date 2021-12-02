@@ -14,7 +14,7 @@ public class SceneTransition : MonoBehaviour
     void Start()
     {
         bc = GetComponent<BoxCollider>();
-        FireAlarm = GameObject.Find("Fire Alarm Controller").GetComponent<fireAlarm>();
+        //FireAlarm = GameObject.Find("Fire Alarm Controller").GetComponent<fireAlarm>();
         mayor = GameObject.Find("Mayor").GetComponent<Mayor>();
         bc.enabled = false;
     }
@@ -22,7 +22,7 @@ public class SceneTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(mayor.hasMayor == true && FireAlarm.timeUp)
+        if(mayor.hasMayor == true)
         {
             bc.enabled = true;
             if (Input.GetKeyDown(KeyCode.F) && text.activeInHierarchy)

@@ -18,11 +18,18 @@ public class GameManager : MonoBehaviour
 
     public  TaskList_SO taskListSOReference;
 
+    public bool is2DSubwayDone = false;
+
     public bool isSubwayDone = false;
 
     public bool isFireAlarmDone = false;
     
     public bool isTravelAgencyDone = false;
+
+    public bool resetThePlayerAfterTravelAgency = false;
+    public bool resetThePlayerAfterSandwichGame = false;
+    public bool resetThePlayerAfterFireAlarm = false;
+
 
     private void Awake()
     {
@@ -65,14 +72,17 @@ public class GameManager : MonoBehaviour
     {
         print("Subway Event start");
         instructionsObject.gameObject.SetActive(false);
-        SceneManager.LoadScene(1);
+        resetThePlayerAfterSandwichGame = true;
+        resetThePlayerAfterFireAlarm = false;
+        resetThePlayerAfterTravelAgency = false;
+        SceneManager.LoadScene("Subway3D");
     }
 
     void OnSubwayEnd()
     {
         isSubwayDone = true;
-        SceneManager.LoadScene(0);
-        resetThePlayerAfterSandwichGame = true;
+       
+        SceneManager.LoadScene("Overworld");
         print("Subway Event done");
     }
 
@@ -94,6 +104,9 @@ public class GameManager : MonoBehaviour
     {
         print("FireAlarm Event start");
         instructionsObject.gameObject.SetActive(false);
+        resetThePlayerAfterSandwichGame = false;
+        resetThePlayerAfterFireAlarm = true;
+        resetThePlayerAfterTravelAgency = false;
         SceneManager.LoadScene("Fire Alarm");
     }
 
@@ -101,7 +114,6 @@ public class GameManager : MonoBehaviour
     {
         isFireAlarmDone = true;
         SceneManager.LoadScene("Overworld");
-        resetThePlayerAfterFireAlarm = true;
         print("FireAlarm Event done");
     }
 
@@ -124,6 +136,9 @@ public class GameManager : MonoBehaviour
     {
         print("Travel Agency Event start");
         instructionsObject.gameObject.SetActive(false);
+        resetThePlayerAfterSandwichGame = false;
+        resetThePlayerAfterFireAlarm = false;
+        resetThePlayerAfterTravelAgency = true;
         SceneManager.LoadScene("travel-agency");
     }
 
@@ -131,15 +146,10 @@ public class GameManager : MonoBehaviour
     {
         isTravelAgencyDone = true;
         SceneManager.LoadScene("Overworld");
-        resetThePlayerAfterTravelAgency = true;
         print("Travel Agency Event done");
     }
 
     #endregion
-
-    public bool resetThePlayerAfterTravelAgency = false;
-    public bool resetThePlayerAfterSandwichGame = false;
-    public bool resetThePlayerAfterFireAlarm = false;
 
     private void OnApplicationQuit()
     {

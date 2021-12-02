@@ -5,20 +5,23 @@ using UnityEngine;
 public class StopPosition : MonoBehaviour
 {
     public string stopString;
+    private bool triggerControl = false;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
-	private void OnTriggerEnter2D(Collider2D collision)
+	private void OnTriggerStay2D(Collider2D collision)
 	{
-        stopString = collision.transform.name;
-        Debug.Log(collision.transform.name);
+        if (!triggerControl)
+        {
+            stopString = collision.transform.name;
+            collision.transform.GetChild(0).gameObject.SetActive(true);
+            triggerControl = true;
+        }
+        
 	}
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        stopString = "";
+        collision.transform.GetChild(0).gameObject.SetActive(false);
+        triggerControl = false;
+    }
 }

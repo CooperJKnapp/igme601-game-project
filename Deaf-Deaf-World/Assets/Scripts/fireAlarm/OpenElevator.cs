@@ -12,21 +12,17 @@ public class OpenElevator : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         receptionist = GameObject.Find("Receptionist");
-        FireAlarm = GameObject.Find("Fire Alarm Controller").GetComponent<fireAlarm>();
-        StartCoroutine(OpenDoors());
+        //FireAlarm = GameObject.Find("Fire Alarm Controller").GetComponent<fireAlarm>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (FireAlarm.timeUp && !receptionist.activeInHierarchy)
-        {
-            anim.SetBool("Open Doors", false);
-        }
+        StartCoroutine(OpenDoors());
     }
     IEnumerator OpenDoors()
     {
-        yield return new WaitForSeconds(3);
-        anim.SetBool("Open Doors", true);
+        yield return new WaitForSeconds(10);
+        anim.SetBool("Open Doors", false);
     }
 }

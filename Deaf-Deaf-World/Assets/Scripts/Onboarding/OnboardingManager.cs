@@ -32,7 +32,7 @@ public class OnboardingManager : MonoBehaviour
     {
         get
         {
-            return (horizontalPosCheck && horizontalNegCheck && verticalPosCheck && verticalNegCheck);
+            return ((horizontalPosCheck || horizontalNegCheck) && (verticalPosCheck || verticalNegCheck));
         }
     }
     [SerializeField]
@@ -60,16 +60,28 @@ public class OnboardingManager : MonoBehaviour
     [SerializeField]
     private OnboardingDialogue introductionDialogue;
 
+    // Stage 5
+    [Header("Stage 5")]
+    [SerializeField]
+    private GameObject listControlsPopup;
+    [SerializeField]
+    private float timeToWaitBeforeListPrompt;
+    private bool listCheck;
+
     // Stage Finish
     [Header("Stage Finish")]
     [SerializeField]
     private Outline travelAgencyOutline;
     [SerializeField]
     private GameObject theMayor;
+    [SerializeField]
+    private MayorMovement mayorMovement;
 
     // Start is called before the first frame update
     void Start()
     {
+        mayorMovement = GameObject.Find("Mayor").GetComponent<MayorMovement>();
+        mayorMovement.enabled = false;
         print("Onboarding start");
         // Multi-stage
         onboardingStage = 0;
@@ -86,9 +98,8 @@ public class OnboardingManager : MonoBehaviour
         // Stage 2
         lookingCheck = false;
 
-        // Stage 3
-
-        // Stage 4
+        // Stage 5
+        listCheck = false;
     }
 
     // Update is called once per frame
@@ -187,6 +198,39 @@ public class OnboardingManager : MonoBehaviour
             case 4:
                 // Handled by OnboardingManager.AdvanceStage4();
                 break;
+            case 5:
+                if (listCheck)
+                {
+
+                    // Wait till timer out
+                    waitingTimer -= Time.deltaTime;
+                    // Check for tab
+                    if (waitingTimer <= 0.0f)
+                    {
+                        // Increment the stage
+                        onboardingStage++;
+                        listControlsPopup.SetActive(false);
+                    }
+                }
+                else
+                {
+                    // Wait till timer out
+                    waitingTimer -= Time.deltaTime;
+                    // Check for tab
+                    if (waitingTimer <= 0.0f)
+                    {
+                        listControlsPopup.SetActive(true);
+                        if (Input.GetKeyDown(KeyCode.Tab))
+                        {
+                            // Set lookingCheck
+                            listCheck = true;
+
+                            // Init countdown timer
+                            waitingTimer = timeToWaitBeforeListPrompt;
+                        }
+                    }
+                }
+                break;
         }
     }
 
@@ -216,8 +260,9 @@ public class OnboardingManager : MonoBehaviour
         {
             // Init stage finish
             onboardingStage++;
-            travelAgencyOutline.enabled = true;
-            theMayor.SetActive(false);
+            //travelAgencyOutline.enabled = true;
+            mayorMovement.enabled = true;
+            waitingTimer = timeToWaitBeforeListPrompt;
         }
     }
 }
