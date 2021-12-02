@@ -65,13 +65,13 @@ public class GameManager : MonoBehaviour
     {
         print("Subway Event start");
         instructionsObject.gameObject.SetActive(false);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Subway3D");
     }
 
     void OnSubwayEnd()
     {
         isSubwayDone = true;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Overworld");
         resetThePlayerAfterSandwichGame = true;
         print("Subway Event done");
     }

@@ -13,7 +13,12 @@ public class doorExit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(exitgame());
+    }
+    IEnumerator exitgame()
+    {
+        yield return new WaitForSeconds(2f);
+        canExit = true;
     }
 
     // Update is called once per frame
@@ -42,7 +47,7 @@ public class doorExit : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 GameEvents.current.TravelAgencyGameTriggerEnd();
-                SceneManager.LoadScene("Overworld");
+                //SceneManager.LoadScene("Overworld");
             }
         }
         else
