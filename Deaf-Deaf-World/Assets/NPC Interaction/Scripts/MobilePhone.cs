@@ -41,6 +41,9 @@ public class MobilePhone : MonoBehaviour
     private void OnEnable()
     {
         isPhoneOpen = true;
+        //Unlock Cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void OnDisable()
@@ -53,9 +56,7 @@ public class MobilePhone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Unlock Cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+
 
     }
 
@@ -65,18 +66,24 @@ public class MobilePhone : MonoBehaviour
     [SerializeField]
     int playerDialogueStage = 0;
 
-    void MoveTheContentScrollView()
+    void MoveTheContentScrollViewUp()
     {
-
         //Scroll up the scroll view
         messagesContainer.localPosition = new Vector3(messagesContainer.localPosition.x, desiredHeightChangeMessagesContainer + messagesContainer.localPosition.y, messagesContainer.localPosition.z);
         print("Y going up");
     }
 
+    void ResetTheContentScrollView()
+    {
+
+    }
 
     public void SetMobileIntialInteractionData()
     {
         playerDialogueStage = 0;
+
+        messagesContainer.localPosition = new Vector3(messagesContainer.localPosition.x, 0, messagesContainer.localPosition.z);
+        print("Resetting the scroll view");
 
         foreach (Transform child in messagesContainer)
         {
@@ -160,7 +167,7 @@ public class MobilePhone : MonoBehaviour
         npcReply2.transform.localScale = Vector2.one;
 
 
-        MoveTheContentScrollView();
+        MoveTheContentScrollViewUp();
 
         yield return new WaitForSeconds(1.5f);
 
@@ -170,29 +177,52 @@ public class MobilePhone : MonoBehaviour
 
     }
 
+    public List<playerDialogues> allCurrentChoices;
+    public List<string> allCurrentCs;
+    bool deliDone, agencyDone, cityHallDone = false;
     void SetStage1InteractionData()
     {
-        List<playerDialogues> allCurrentChoices = dialoguesSObj.secondPlayerDialogueList;
-
-        List<string> allCurrentCs = new List<string>();
-
+        allCurrentChoices = new List<playerDialogues>();
         foreach (playerDialogues playerDialogues in dialoguesSObj.secondPlayerDialogueList)
         {
-            if (playerDialogues.playerDialogue.Contains("Deli") && PlayerPrefs.GetInt("SandwichChoiceDone") == 1)
-                //allCurrentChoices.Find(playerDialogues.playerDialogue.Contains(""))
-                allCurrentChoices.RemoveAt(allCurrentChoices.FindIndex(x => playerDialogues.playerDialogue.Contains("Deli")));
+            allCurrentChoices.Add(playerDialogues);
+        }
 
-            if (playerDialogues.playerDialogue.Contains("Travel") && PlayerPrefs.GetInt("TravelAgencyChoiceDone") == 1)
-                //allCurrentChoices.Find(playerDialogues.playerDialogue.Contains(""))
-                allCurrentChoices.RemoveAt(allCurrentChoices.FindIndex(x => playerDialogues.playerDialogue.Contains("Travel")));
+        allCurrentCs = new List<string>();
 
-            if (playerDialogues.playerDialogue.Contains("Hall") && PlayerPrefs.GetInt("CityHallChoiceDone") == 1)
-                //allCurrentChoices.Find(playerDialogues.playerDialogue.Contains(""))
-                allCurrentChoices.RemoveAt(allCurrentChoices.FindIndex(x => playerDialogues.playerDialogue.Contains("Hall")));
+        foreach (playerDialogues playerDialogues in allCurrentChoices)
+        {
+            //if (playerDialogues.playerDialogue.Contains("Deli") && PlayerPrefs.GetInt("SandwichChoiceDone") == 1)
+            //    //allCurrentChoices.Find(playerDialogues.playerDialogue.Contains(""))
+            //    allCurrentChoices.RemoveAt(allCurrentChoices.FindIndex(x => playerDialogues.playerDialogue.Contains("Deli")));
+
+            //if (playerDialogues.playerDialogue.Contains("Travel") && PlayerPrefs.GetInt("TravelAgencyChoiceDone") == 1)
+            //    //allCurrentChoices.Find(playerDialogues.playerDialogue.Contains(""))
+            //    allCurrentChoices.RemoveAt(allCurrentChoices.FindIndex(x => playerDialogues.playerDialogue.Contains("Travel")));
+
+            //if (playerDialogues.playerDialogue.Contains("Hall") && PlayerPrefs.GetInt("CityHallChoiceDone") == 1)
+            //    //allCurrentChoices.Find(playerDialogues.playerDialogue.Contains(""))
+            //    allCurrentChoices.RemoveAt(allCurrentChoices.FindIndex(x => playerDialogues.playerDialogue.Contains("Hall")));
+
+            if (playerDialogues.playerDialogue.Contains("Deli") && PlayerPrefs.GetInt("SandwichChoiceDone") != 1)
+            {
+                allCurrentCs.Add(playerDialogues.playerDialogue);
+            }
+           
+            if (playerDialogues.playerDialogue.Contains("Travel") && PlayerPrefs.GetInt("TravelAgencyChoiceDone") != 1 )
+            {
+                allCurrentCs.Add(playerDialogues.playerDialogue);
+            }
+            
+            if (playerDialogues.playerDialogue.Contains("Hall") && PlayerPrefs.GetInt("CityHallChoiceDone") != 1 )
+            {
+                allCurrentCs.Add(playerDialogues.playerDialogue);
+            }
+           
         }
 
         // currentDialoguePlayerCount = dialoguesSObj.secondPlayerDialogueList.Count;
-        currentDialoguePlayerCount = allCurrentChoices.Count;
+        currentDialoguePlayerCount = allCurrentCs.Count;
 
 
 
@@ -204,11 +234,8 @@ public class MobilePhone : MonoBehaviour
 
             selectBoxItem.GetComponent<MessageChoice>().dialogueBoxNumber = i;
 
-
-            string DialogueCreationChoice = dialoguesSObj.secondPlayerDialogueList[i].playerDialogue;
-
-
-            selectBoxItem.GetComponentInChildren<TextMeshProUGUI>().text = dialoguesSObj.secondPlayerDialogueList[i].playerDialogue;
+            //selectBoxItem.GetComponentInChildren<TextMeshProUGUI>().text = dialoguesSObj.secondPlayerDialogueList[i].playerDialogue;
+            selectBoxItem.GetComponentInChildren<TextMeshProUGUI>().text = allCurrentCs[i];
 
             selectBoxItem.transform.SetParent(playerDialogueSelectContainer);
 
@@ -233,14 +260,25 @@ public class MobilePhone : MonoBehaviour
                 if (choice.Contains("Deli"))
                 {
                     PlayerPrefs.SetInt("SandwichChoiceDone", 1);
+                    OverworldGM.overworldGMInstance.SubwayTriggerArea.GetComponent<Outline>().enabled = true;
+                    deliDone = true;
+                    
+                        allCurrentCs.RemoveAt(allCurrentCs.FindIndex(x => x.Contains("Deli")));
+                    
                 }
                 else if (choice.Contains("Travel"))
                 {
                     PlayerPrefs.SetInt("TravelAgencyChoiceDone", 1);
+                    OverworldGM.overworldGMInstance.TravelAgencyTriggerArea.GetComponent<Outline>().enabled = true;
+                    agencyDone = true;
+                    allCurrentCs.RemoveAt(allCurrentCs.FindIndex(x => x.Contains("Travel")));
                 }
                 else if (choice.Contains("Hall"))
                 {
                     PlayerPrefs.SetInt("CityHallChoiceDone", 1);
+                    OverworldGM.overworldGMInstance.FireAlarmTriggerArea.GetComponent<Outline>().enabled = true;
+                    cityHallDone = true;
+                    allCurrentCs.RemoveAt(allCurrentCs.FindIndex(x => x.Contains("Hall")));
                 }
 
                 // do something with the instantiated item -- for instance
@@ -253,7 +291,7 @@ public class MobilePhone : MonoBehaviour
                 //reset the item's scale -- this can get munged with UI prefabs
                 playerMessageItem.transform.localScale = Vector2.one;
 
-                MoveTheContentScrollView();
+                MoveTheContentScrollViewUp();
 
                 StartCoroutine(npcStage1Replies());
             }
@@ -274,7 +312,7 @@ public class MobilePhone : MonoBehaviour
             //reset the item's scale -- this can get munged with UI prefabs
             npcReply.transform.localScale = Vector2.one;
 
-            MoveTheContentScrollView();
+            MoveTheContentScrollViewUp();
 
             yield return new WaitForSeconds(1.5f);
 
@@ -323,7 +361,7 @@ public class MobilePhone : MonoBehaviour
                 //reset the item's scale -- this can get munged with UI prefabs
                 playerMessageItem.transform.localScale = Vector2.one;
 
-                MoveTheContentScrollView();
+                MoveTheContentScrollViewUp();
 
                 StartCoroutine(npcStage2Replies());
             }
@@ -344,13 +382,18 @@ public class MobilePhone : MonoBehaviour
             //reset the item's scale -- this can get munged with UI prefabs
             npcReply.transform.localScale = Vector2.one;
 
-            MoveTheContentScrollView();
+            MoveTheContentScrollViewUp();
 
             yield return new WaitForSeconds(1.5f);
 
             //playerDialogueStage = 2;
 
             NPCInteract.NPCInteractInstance.ExitInteraction();
+
+            if (allCurrentCs.Count <= 0)
+            {
+                print("Done with all the npc interactions");
+            }
         }
 
         #endregion

@@ -23,14 +23,12 @@ public class OverworldGM : MonoBehaviour
     GameManager GameManagerReference;
 
     [Header("Trigger Area Objects References")]
-    [SerializeField]
-    GameObject SubwayTriggerArea;
+    
+    public GameObject SubwayTriggerArea;
 
-    [SerializeField]
-    GameObject FireAlarmTriggerArea;
+    public GameObject FireAlarmTriggerArea;
 
-    [SerializeField]
-    GameObject TravelAgencyTriggerArea;
+    public GameObject TravelAgencyTriggerArea;
 
     [Header("Exit Point References")]
 
@@ -63,7 +61,7 @@ public class OverworldGM : MonoBehaviour
     void CheckIfGameOver()
     {
         // if (GameManagerReference.isSubwayDone && GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
-        if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
+        if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isSubwayDone && GameManagerReference.isFireAlarmDone)
         {
             playerTransform.GetComponent<FirstPersonController>().canWalk = false;
         }
@@ -72,12 +70,27 @@ public class OverworldGM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         //Check for closing the trigger areas, I know Hardcoded as F 
+
+        if (GameManagerReference.isSubwayDone)
+        {
+            SubwayTriggerArea.SetActive(false);
+        }
+
         if (GameManagerReference.isTravelAgencyDone)
         {
             TravelAgencyTriggerArea.SetActive(false);
-            FireAlarmTriggerArea.SetActive(true);
         }
+
+        if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isSubwayDone)
+        {
+           // TravelAgencyTriggerArea.SetActive(false);
+           FireAlarmTriggerArea.SetActive(true);
+        }
+
+        
 
         //Check and set for Players exit position from the minigames to overworld
         if (GameManagerReference.resetThePlayerAfterTravelAgency)

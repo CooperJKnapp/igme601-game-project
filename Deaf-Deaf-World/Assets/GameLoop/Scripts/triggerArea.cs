@@ -12,7 +12,7 @@ public class triggerArea : MonoBehaviour
             GameEvents.current.SubwayGameTriggerEnter();
         else if (this.gameObject.tag == GameVariables.Tasks.TravelAgency.ToString())
             GameEvents.current.TravelAgencyGameTriggerEnter();
-        else if (this.gameObject.tag == GameVariables.Tasks.MeetTheMayor.ToString())
+        else if (this.gameObject.tag == GameVariables.Tasks.MeetTheMayor.ToString() && GameManager.gameManagerInstance.isSubwayDone && GameManager.gameManagerInstance.isTravelAgencyDone)
             GameEvents.current.FireAlarmGameTriggerEnter();
     }
 
@@ -34,7 +34,7 @@ public class triggerArea : MonoBehaviour
                 GameEvents.current.SubwayGameTriggerStart();
             else if (this.gameObject.tag == GameVariables.Tasks.TravelAgency.ToString())
                 GameEvents.current.TravelAgencyGameTriggerStart();
-            else if (this.gameObject.tag == GameVariables.Tasks.MeetTheMayor.ToString())
+            else if (this.gameObject.tag == GameVariables.Tasks.MeetTheMayor.ToString() && GameManager.gameManagerInstance.isSubwayDone && GameManager.gameManagerInstance.isTravelAgencyDone)
                 GameEvents.current.FireAlarmGameTriggerStart();
         }
     }

@@ -42,7 +42,7 @@ public class doorExit : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 GameEvents.current.TravelAgencyGameTriggerEnd();
-                SceneManager.LoadScene("Overworld");
+                //SceneManager.LoadScene("Overworld");
             }
         }
         else

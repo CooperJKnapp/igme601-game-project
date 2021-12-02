@@ -13,11 +13,16 @@ public class NPCInteract : MonoBehaviour
 
     public KeyCode npcInteractKey;
 
+    public bool allNPCinteractionsDone = false;
+
     [SerializeField]
     GameObject MobileBody;
 
     [SerializeField]
     GameObject interactionInstructionText;
+
+    [SerializeField]
+    GameObject mobileTutorialText;
 
     [SerializeField]
     float TimeForMobileInstructions;
@@ -32,10 +37,13 @@ public class NPCInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(npcInteractKey) && isNPCinteractable)
-        {
-            StartInteraction();
-        }
+
+
+        if (!allNPCinteractionsDone)
+            if (Input.GetKeyDown(npcInteractKey) && isNPCinteractable)
+            {
+                StartInteraction();
+            }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,6 +53,7 @@ public class NPCInteract : MonoBehaviour
             if (!other.gameObject.transform.GetComponentInParent<NPCData>().isAlreadyInteractedWith)
             {
                 interactionInstructionText.SetActive(true);
+                interactionInstructionText.GetComponentInChildren<TextMeshProUGUI>().text = "Left Click to interact";
                 isNPCinteractable = true;
                 tempCollider = other;
                 print("NPC TriggerEnter collider");
@@ -78,12 +87,13 @@ public class NPCInteract : MonoBehaviour
 
         //Stop the player movement
         //FirstPersonController.canMove = false;
-        GameObject tempObj= GameObject.Find("Player");
+        GameObject tempObj = GameObject.Find("Player");
         tempObj.GetComponent<FirstPersonController>().InteractableCanMove = false;
-        
+
         //Open Phone
         print("Open Mobile phone");
         MobileBody.SetActive(true);
+        StartCoroutine(showInstructionsForMobileInterface());
 
         //Set all the data for the mobile interface
         MobilePhone.mobilePhoneInstance.SetMobileIntialInteractionData();
@@ -92,12 +102,13 @@ public class NPCInteract : MonoBehaviour
 
     IEnumerator showInstructionsForMobileInterface()
     {
-
-
-        yield return new WaitForSeconds(4f);
-        
+        mobileTutorialText.SetActive(true);
+        mobileTutorialText.GetComponentInChildren<TextMeshProUGUI>().text = "Use the Mouse to choose your dialogue";
+        print("Mouse instruction");
+        yield return new WaitForSeconds(TimeForMobileInstructions);
+        mobileTutorialText.SetActive(false);
     }
-   
+
 
 
     public void ExitInteraction()

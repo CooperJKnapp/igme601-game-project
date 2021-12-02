@@ -42,7 +42,7 @@ public class ToggleTasklist : MonoBehaviour
         if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
         {
             instructionsObject.SetActive(true);
-            instructionsObject.GetComponentInChildren<TextMeshProUGUI>().text = "You have completed the Deaf Deaf World demo.\nThanks for testing.";
+            instructionsObject.GetComponentInChildren<TextMeshProUGUI>().text = "You have completed the Deaf Deaf World experience.\nThanks for testing.";
             PlayerPrefs.DeleteAll();
         }
     }

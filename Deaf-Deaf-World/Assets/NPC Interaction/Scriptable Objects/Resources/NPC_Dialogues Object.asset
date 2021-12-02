@@ -25,8 +25,9 @@ MonoBehaviour:
   - npcDialogue: "What\u2019s up?"
   - npcDialogue: "How\u2019s it going?"
   secondPlayerDialogueList:
-  - playerDialogue: Do you know where I can find the Travel Agency?
   - playerDialogue: Do you know where I can find the Deaf Deaf Deli?
+  - playerDialogue: Do you know where I can find the Travel Agency?
+  - playerDialogue: Do you know where I can find the City Hall?
   secondNpcDialogueList:
   - npcDialogue: Over there
   - npcDialogue: That way

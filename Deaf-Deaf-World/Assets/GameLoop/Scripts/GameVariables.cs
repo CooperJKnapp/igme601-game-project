@@ -6,16 +6,6 @@ public class GameVariables : MonoBehaviour
 {
     public static GameVariables gameVariablesInstance;  //instance variable for class, since we would need to call this from other scripts
     
-    //public enum GameState
-    //{
-    //    startGame,
-    //    endOfGame,
-    //    idle,
-    //    dialogue,
-    //    tasks,
-    //    activity //Like FireAlarm
-    //}
-    
     public enum Tasks  //enum of keeping track of task states
     {
         Subway,

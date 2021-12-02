@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Interaction : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Interaction : MonoBehaviour
 
 	public void Exit()
 	{
-        Application.Quit();
-	}
+        //Application.Quit();
+        SceneManager.LoadScene("Subway3D");
+    }
 }
