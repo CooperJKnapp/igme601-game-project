@@ -45,6 +45,10 @@ public class NPCMovement : MonoBehaviour
             {
                 ++i;
             }
+            if (i == waypoint.Length)
+            {
+                i = 0;
+            }
             agent.SetDestination(waypoint[i].transform.position);
         }
         else if( i == waypoint.Length)
