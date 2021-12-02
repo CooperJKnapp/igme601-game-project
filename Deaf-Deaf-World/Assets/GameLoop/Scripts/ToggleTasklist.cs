@@ -38,8 +38,8 @@ public class ToggleTasklist : MonoBehaviour
 
     void CheckIfGameOver()
     {
-        // if (GameManagerReference.isSubwayDone && GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
-        if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
+         if (GameManagerReference.isSubwayDone && GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
+        //if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
         {
             instructionsObject.SetActive(true);
             instructionsObject.GetComponentInChildren<TextMeshProUGUI>().text = "You have completed the Deaf Deaf World experience.\nThanks for testing.";
@@ -69,10 +69,14 @@ public class ToggleTasklist : MonoBehaviour
         {
             Transform temp = CheckListPanel.transform.GetChild(i);
             if (!GameManagerReference.isTravelAgencyDone)
-            { numberOfTasks = 1; }
-            else
+            { numberOfTasks = 2; }
+            else if (!GameManagerReference.isSubwayDone)
             {
                 numberOfTasks = 2;
+            }
+            else
+            {
+                numberOfTasks = 3;
             }
             //if (i < TaskList_SO_Reference.tasks.Count)
             if (i < numberOfTasks)

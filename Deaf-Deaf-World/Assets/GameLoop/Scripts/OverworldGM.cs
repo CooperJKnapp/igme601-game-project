@@ -58,6 +58,12 @@ public class OverworldGM : MonoBehaviour
         }
     }
 
+
+    private void OnEnable()
+    {
+        print(" Debug Overworld set again");
+    }
+
     void CheckIfGameOver()
     {
         // if (GameManagerReference.isSubwayDone && GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
@@ -90,23 +96,26 @@ public class OverworldGM : MonoBehaviour
            FireAlarmTriggerArea.SetActive(true);
         }
 
-        
+
 
         //Check and set for Players exit position from the minigames to overworld
         if (GameManagerReference.resetThePlayerAfterTravelAgency)
         {
             GameManagerReference.resetThePlayerAfterTravelAgency = false;
             SetPlayerAfterExitMinigame(GameVariables.Tasks.TravelAgency);
+            print("Debug Checked reset and setplayer travel");
         }
         if (GameManagerReference.resetThePlayerAfterSandwichGame)
         {
             GameManagerReference.resetThePlayerAfterSandwichGame = false;
             SetPlayerAfterExitMinigame(GameVariables.Tasks.Subway);
+            print(" Debug Checked reset and setplayer sandwich");
         }
         if (GameManagerReference.resetThePlayerAfterFireAlarm)
         {
             GameManagerReference.resetThePlayerAfterFireAlarm = false;
             SetPlayerAfterExitMinigame(GameVariables.Tasks.MeetTheMayor);
+            print("Debug Checked reset and setplayer mayor");
         }
 
         //Check the Game if over and set the player's movement off
@@ -125,6 +134,7 @@ public class OverworldGM : MonoBehaviour
             case GameVariables.Tasks.Subway:
                 playerTransform.transform.position = subwayGameExitPoint.transform.position;
                 playerTransform.transform.rotation = Quaternion.Euler(playerTransform.transform.rotation.x, subwayGameExitPoint.transform.localRotation.y, playerTransform.transform.rotation.z);
+                print(" Debug Subway set position after minigame");
                 break;
             case GameVariables.Tasks.MeetTheMayor:
                 playerTransform.transform.position = fireAlarmExitPoint.transform.position;

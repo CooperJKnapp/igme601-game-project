@@ -11,12 +11,16 @@ public class DeliManager : MonoBehaviour
 
     private Transform doorSpawn;
     private Transform orderSpawn;
-
-    public bool entering;
+    
+    [SerializeField]
+    private bool entering;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+
+        entering = !GameManager.gameManagerInstance.is2DSubwayDone;
+
         player = GameObject.Find("Player").transform;
         exit = GameObject.Find("doorSpot").GetComponent<doorExit>();
         order = GameObject.Find("orderSpot").GetComponent<deliOrder>();

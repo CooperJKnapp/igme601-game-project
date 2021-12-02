@@ -56,6 +56,7 @@ public class NPCInteract : MonoBehaviour
                 interactionInstructionText.GetComponentInChildren<TextMeshProUGUI>().text = "Left Click to interact";
                 isNPCinteractable = true;
                 tempCollider = other;
+                tempCollider.gameObject.transform.GetComponentInParent<Rigidbody>().isKinematic = true;
                 print("NPC TriggerEnter collider");
             }
         }
@@ -75,15 +76,13 @@ public class NPCInteract : MonoBehaviour
     void StartInteraction()
     {
 
-
-
         //Set interactable bools
         isNPCinteractable = false;
-        tempCollider.gameObject.transform.GetComponentInParent<NPCData>().isAlreadyInteractedWith = true;
-
+        // tempCollider.gameObject.transform.GetComponentInParent<NPCData>().isAlreadyInteractedWith = true; //Getback
+        interactionInstructionText.SetActive(false);
         // Stop the NPC movement
-        print("tempcollider " + tempCollider.gameObject.name);
-        tempCollider.gameObject.transform.GetComponentInParent<Rigidbody>().isKinematic = true;
+        //print("tempcollider " + tempCollider.gameObject.name);
+      //  tempCollider.gameObject.transform.GetComponentInParent<Rigidbody>().isKinematic = true;
 
         //Stop the player movement
         //FirstPersonController.canMove = false;

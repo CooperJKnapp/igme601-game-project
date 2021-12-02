@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public  TaskList_SO taskListSOReference;
 
+    public bool is2DSubwayDone = false;
+
     public bool isSubwayDone = false;
 
     public bool isFireAlarmDone = false;
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
     void OnSubwayEnd()
     {
         isSubwayDone = true;
+       
         SceneManager.LoadScene("Overworld");
         resetThePlayerAfterSandwichGame = true;
         print("Subway Event done");

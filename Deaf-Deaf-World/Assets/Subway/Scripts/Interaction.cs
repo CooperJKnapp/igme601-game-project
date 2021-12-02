@@ -18,6 +18,7 @@ public class Interaction : MonoBehaviour
 	public void Exit()
 	{
         //Application.Quit();
+        GameManager.gameManagerInstance.is2DSubwayDone = true;
         SceneManager.LoadScene("Subway3D");
     }
 }
