@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0a74994d079374e8d18c0719a0135f, type: 3}
+  m_Name: NPC_Dialogues Object
+  m_EditorClassIdentifier: 
+  firstPlayerDialogueList:
+  - playerDialogue: Hi! How are you?
+  - playerDialogue: Heya, How you doing?
+  first1NpcDialogueList:
+  - npcDialogue: Doing great!
+  - npcDialogue: Fantastic.
+  - npcDialogue: Stellar.
+  - npcDialogue: "Vib\u2019n."
+  first2NpcDialogueList:
+  - npcDialogue: How are you?
+  - npcDialogue: "What\u2019s up?"
+  - npcDialogue: "How\u2019s it going?"
+  secondPlayerDialogueList:
+  - playerDialogue: Do you know where I can find the Travel Agency?
+  - playerDialogue: Do you know where I can find the Deaf Deaf Deli?
+  secondNpcDialogueList:
+  - npcDialogue: Over there
+  - npcDialogue: That way
+  thirdPlayerDialogueList:
+  - playerDialogue: Goodbye, thank you!
+  - playerDialogue: Thanks!
+  thirdNpcDialogueList:
+  - npcDialogue: No problem
+  - npcDialogue: Have a good one
+  - npcDialogue: Enjoy!
+  - npcDialogue: Goodbye

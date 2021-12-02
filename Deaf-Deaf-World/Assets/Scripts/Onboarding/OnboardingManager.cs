@@ -220,7 +220,7 @@ public class OnboardingManager : MonoBehaviour
         {
             // Init stage finish
             onboardingStage++;
-            travelAgencyOutline.enabled = true;
+            //travelAgencyOutline.enabled = true;
             mayorMovement.enabled = true;
         }
     }

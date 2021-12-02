@@ -18,8 +18,10 @@ public class FirstPersonController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
 
-    [HideInInspector]
-    public static bool canMove = true;
+    //[HideInInspector]
+    public bool canMove = true;
+
+    public bool InteractableCanMove = true;
 
     void Start()
     {
@@ -38,12 +40,12 @@ public class FirstPersonController : MonoBehaviour
         Vector3 right = transform.TransformDirection(Vector3.right);
         // Press Left Shift to run
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float curSpeedX = canMove && canWalk ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove && canWalk ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
+        float curSpeedX = canMove && canWalk && InteractableCanMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
+        float curSpeedY = canMove && canWalk && InteractableCanMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        if (Input.GetButton("Jump") && canMove && canWalk && characterController.isGrounded)
+        if (Input.GetButton("Jump") && canMove && canWalk && characterController.isGrounded && InteractableCanMove)
         {
             moveDirection.y = jumpSpeed;
         }
@@ -64,7 +66,7 @@ public class FirstPersonController : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
 
         // Player and Camera rotation
-        if (canMove)
+        if (canMove && InteractableCanMove)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
@@ -91,6 +93,14 @@ public class FirstPersonController : MonoBehaviour
                 Time.timeScale = 0;
                 playerCamera.GetComponent<AudioListener>().enabled = false;
             }
+
+
+            //comment later
+            //if (InteractableCanMove)
+            //{
+            //    Cursor.lockState = CursorLockMode.None;
+            //    Cursor.visible = true;
+            //}
         }
     }
 

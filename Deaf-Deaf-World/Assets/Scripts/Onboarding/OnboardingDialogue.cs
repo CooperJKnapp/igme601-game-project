@@ -37,6 +37,8 @@ public class OnboardingDialogue : MonoBehaviour {
     public void BeginDialogue() {
         // Lock the player
         playerToLock.enabled = false;
+
+        //Uncomment Later
         previousLockState = Cursor.lockState;
         Cursor.lockState = CursorLockMode.Locked;
 
