@@ -54,7 +54,7 @@ public class triggerArea : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             print("Debug stay the player");
-            if (instructions != null)
+            if (instructions != null && GameManagerReference.isSubwayDone && GameManagerReference.isTravelAgencyDone)
             {
                 instructions.SetActive(true);
             }

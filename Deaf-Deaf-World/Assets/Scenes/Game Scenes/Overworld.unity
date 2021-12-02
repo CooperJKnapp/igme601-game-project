@@ -2857,7 +2857,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-14728
+  m_Name: pb_Mesh-59538
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5058,6 +5058,10 @@ PrefabInstance:
       value: PlayerCapsule
       objectReference: {fileID: 0}
     - target: {fileID: 397028660965669840, guid: a01e2443853e6d2458d507a654ae5e59, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782124694425150719, guid: a01e2443853e6d2458d507a654ae5e59, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
