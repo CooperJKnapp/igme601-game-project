@@ -101,19 +101,19 @@ public class OverworldGM : MonoBehaviour
         //Check and set for Players exit position from the minigames to overworld
         if (GameManagerReference.resetThePlayerAfterTravelAgency)
         {
-            GameManagerReference.resetThePlayerAfterTravelAgency = false;
+            //GameManagerReference.resetThePlayerAfterTravelAgency = false;
             SetPlayerAfterExitMinigame(GameVariables.Tasks.TravelAgency);
             print("Debug Checked reset and setplayer travel");
         }
         if (GameManagerReference.resetThePlayerAfterSandwichGame)
         {
-            GameManagerReference.resetThePlayerAfterSandwichGame = false;
+            //GameManagerReference.resetThePlayerAfterSandwichGame = false;
             SetPlayerAfterExitMinigame(GameVariables.Tasks.Subway);
             print(" Debug Checked reset and setplayer sandwich");
         }
         if (GameManagerReference.resetThePlayerAfterFireAlarm)
         {
-            GameManagerReference.resetThePlayerAfterFireAlarm = false;
+            //GameManagerReference.resetThePlayerAfterFireAlarm = false;
             SetPlayerAfterExitMinigame(GameVariables.Tasks.MeetTheMayor);
             print("Debug Checked reset and setplayer mayor");
         }

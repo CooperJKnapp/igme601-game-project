@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Interaction : MonoBehaviour
 {
+    GameManager refer;
+
     void Start()
     {
-        
+        refer = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -18,7 +20,7 @@ public class Interaction : MonoBehaviour
 	public void Exit()
 	{
         //Application.Quit();
-        GameManager.gameManagerInstance.is2DSubwayDone = true;
+        refer.is2DSubwayDone = true;
         SceneManager.LoadScene("Subway3D");
     }
 }
