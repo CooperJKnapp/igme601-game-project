@@ -9,7 +9,9 @@ TagManager:
   - Subway
   - receptionist
   - MeetTheMayor
+  - NPC
   - Agent
+  - PlayerCapsule
   layers:
   - Default
   - TransparentFX

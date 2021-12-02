@@ -11,12 +11,39 @@ public class DeliManager : MonoBehaviour
 
     private Transform doorSpawn;
     private Transform orderSpawn;
+    
+    [SerializeField]
+    private bool entering;
 
-    public bool entering;
+    private int frame = 0;
+
+    private void Start()
+    {
+        frame = 0;
+    }
+
+    private void Awake()
+    {
+        frame = 0;
+    }
+
+    private void Update()
+    {
+        if (frame == 1)
+        {
+            setUp();
+        }
+        frame++;
+    }
 
     // Start is called before the first frame update
-    void Start()
+    void setUp()
     {
+        GameManager GameManagerReference = GameObject.FindObjectOfType<GameManager>();
+        entering = !GameManagerReference.is2DSubwayDone;
+        print("Debug entering: " + entering);
+        print("Debug GameManagerReference: " + GameManagerReference.is2DSubwayDone);
+
         player = GameObject.Find("Player").transform;
         exit = GameObject.Find("doorSpot").GetComponent<doorExit>();
         order = GameObject.Find("orderSpot").GetComponent<deliOrder>();

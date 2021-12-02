@@ -41,8 +41,8 @@ public class doorExit : MonoBehaviour
             exitUI.SetActive(true);
             if (Input.GetMouseButtonDown(0))
             {
-                GameEvents.current.TravelAgencyGameTriggerEnd();
-                SceneManager.LoadScene("Overworld");
+                GameEvents.current.SubwayGameTriggerEnd();
+                //SceneManager.LoadScene("Overworld");
             }
         }
         else

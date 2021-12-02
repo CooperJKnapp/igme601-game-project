@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestScript : MonoBehaviour
+public class NPCData : MonoBehaviour
 {
-    public KeyCode _key;
+
+    public bool isAlreadyInteractedWith = false;
 
     // Start is called before the first frame update
     void Start()
@@ -15,9 +16,6 @@ public class TestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(_key))
-        {
-            //GameEvents.current.TravelAgencyGameTriggerEnd();
-        }
+        
     }
 }

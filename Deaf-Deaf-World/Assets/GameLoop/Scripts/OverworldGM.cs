@@ -23,14 +23,12 @@ public class OverworldGM : MonoBehaviour
     GameManager GameManagerReference;
 
     [Header("Trigger Area Objects References")]
-    [SerializeField]
-    GameObject SubwayTriggerArea;
+    
+    public GameObject SubwayTriggerArea;
 
-    [SerializeField]
-    GameObject FireAlarmTriggerArea;
+    public GameObject FireAlarmTriggerArea;
 
-    [SerializeField]
-    GameObject TravelAgencyTriggerArea;
+    public GameObject TravelAgencyTriggerArea;
 
     [Header("Exit Point References")]
 
@@ -60,44 +58,69 @@ public class OverworldGM : MonoBehaviour
         }
     }
 
+
+    private void OnEnable()
+    {
+        print(" Debug Overworld set again");
+    }
+
+    /*
     void CheckIfGameOver()
     {
         // if (GameManagerReference.isSubwayDone && GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
-        if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isFireAlarmDone)
+        if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isSubwayDone && GameManagerReference.isFireAlarmDone)
         {
             playerTransform.GetComponent<FirstPersonController>().canWalk = false;
         }
-    }
+    }*/
 
     // Start is called before the first frame update
     void Start()
     {
+
+
         //Check for closing the trigger areas, I know Hardcoded as F 
+
+        if (GameManagerReference.isSubwayDone)
+        {
+            SubwayTriggerArea.SetActive(false);
+        }
+
         if (GameManagerReference.isTravelAgencyDone)
         {
             TravelAgencyTriggerArea.SetActive(false);
-            FireAlarmTriggerArea.SetActive(true);
         }
+
+        if (GameManagerReference.isTravelAgencyDone && GameManagerReference.isSubwayDone)
+        {
+           // TravelAgencyTriggerArea.SetActive(false);
+           FireAlarmTriggerArea.SetActive(true);
+        }
+
+
 
         //Check and set for Players exit position from the minigames to overworld
         if (GameManagerReference.resetThePlayerAfterTravelAgency)
         {
-            GameManagerReference.resetThePlayerAfterTravelAgency = false;
+            //GameManagerReference.resetThePlayerAfterTravelAgency = false;
             SetPlayerAfterExitMinigame(GameVariables.Tasks.TravelAgency);
+            print("Debug Checked reset and setplayer travel");
         }
         if (GameManagerReference.resetThePlayerAfterSandwichGame)
         {
-            GameManagerReference.resetThePlayerAfterSandwichGame = false;
+            //GameManagerReference.resetThePlayerAfterSandwichGame = false;
             SetPlayerAfterExitMinigame(GameVariables.Tasks.Subway);
+            print(" Debug Checked reset and setplayer sandwich");
         }
         if (GameManagerReference.resetThePlayerAfterFireAlarm)
         {
-            GameManagerReference.resetThePlayerAfterFireAlarm = false;
+            //GameManagerReference.resetThePlayerAfterFireAlarm = false;
             SetPlayerAfterExitMinigame(GameVariables.Tasks.MeetTheMayor);
+            print("Debug Checked reset and setplayer mayor");
         }
 
         //Check the Game if over and set the player's movement off
-        CheckIfGameOver();
+        //CheckIfGameOver();
     }
 
     public void SetPlayerAfterExitMinigame(GameVariables.Tasks tasks)
@@ -107,11 +130,12 @@ public class OverworldGM : MonoBehaviour
             case GameVariables.Tasks.TravelAgency:
                 playerTransform.transform.position = travelAgencyExitPoint.transform.position;
                 playerTransform.transform.rotation = Quaternion.Euler(playerTransform.transform.rotation.x, travelAgencyExitPoint.transform.localRotation.y, playerTransform.transform.rotation.z);
-                print("Travel agency set");
+                print("debug position TA");
                 break;
             case GameVariables.Tasks.Subway:
                 playerTransform.transform.position = subwayGameExitPoint.transform.position;
                 playerTransform.transform.rotation = Quaternion.Euler(playerTransform.transform.rotation.x, subwayGameExitPoint.transform.localRotation.y, playerTransform.transform.rotation.z);
+                print("debug position DDD");
                 break;
             case GameVariables.Tasks.MeetTheMayor:
                 playerTransform.transform.position = fireAlarmExitPoint.transform.position;

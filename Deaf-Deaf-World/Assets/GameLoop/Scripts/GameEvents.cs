@@ -54,6 +54,7 @@ public class GameEvents : MonoBehaviour
     {
         if (onSubwayGameTriggerEnd != null)
         {
+            print("Debug trigger sub");
             onSubwayGameTriggerEnd();
         }
     }
